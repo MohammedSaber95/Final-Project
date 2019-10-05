@@ -19,6 +19,8 @@ class CreateOrderTable extends Migration
             $table->string('city');
             $table->string('zipCode');
             $table->integer('phoneNumber');
+            $table->unsignedBigInteger('cart_id')->index();
+            $table ->decimal('subTotal');      
             $table->timestamps();
         });
     }

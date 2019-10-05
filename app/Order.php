@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $table = 'order';
     protected $fillable = [
-        'name','address','city','zipCode','phoneNumber',''
+        'name','address','city','zipCode','phoneNumber','cart_id','subTotal'
     ];
 
-    public function products(){
-        return $this->belongsToMany(Product::class);
+    public function cart(){
+        return $this->belongsTo(Cart::class);
     }
 
 }

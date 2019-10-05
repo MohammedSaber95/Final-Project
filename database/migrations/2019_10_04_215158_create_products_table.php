@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('category_id')->index();
+            $table->unsignedBigInteger('cart_id')->index();
             $table->timestamps();
         });
     }

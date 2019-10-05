@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable =[
-        'name','description','image1','image2','image3','price','color','user_id','category_id'
+        'name','description','image1','image2','image3','price','color','user_id','category_id','cart_id'
     ];
 
     public function user(){
@@ -18,7 +18,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function orders(){
-        return $this->belongsToMany(Order::class);
+
+    public function cart(){
+        return $this->belongsTo(cart::class);
     }
 }
