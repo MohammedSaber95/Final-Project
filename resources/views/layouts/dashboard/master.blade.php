@@ -200,7 +200,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Charts
+                Admins & Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -208,19 +208,13 @@
               <li class="nav-item">
                 <a href="{{route('chartJs')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p>Admins</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('flot')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('Inline')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <p>Users</p>
                 </a>
               </li>
             </ul>
@@ -229,7 +223,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                UI Elements
+                Products & Categories
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -238,31 +232,13 @@
               <li class="nav-item">
                 <a href="{{route('icons')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
+                  <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
               <a href="{{route('buttons')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('sliders')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('modals')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('navbar')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
+                  <p>Categories</p>
                 </a>
               </li>
             </ul>
