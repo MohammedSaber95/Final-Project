@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Home</title>
+    <title>YourHome</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="{{asset('img/core-img/favicon.ico')}}">
@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body >
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
