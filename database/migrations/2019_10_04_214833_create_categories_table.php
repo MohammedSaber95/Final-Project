@@ -16,6 +16,8 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
+            $table->boolean('status');
+            $table->string('image');
             $table->unsignedBigInteger('user_id')->index();
             $table->timestamps();
         });
