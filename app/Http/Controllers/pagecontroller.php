@@ -8,23 +8,23 @@ class pagecontroller extends Controller
 {
     //
     public function index(){
-        return view('pages.index');
+        return view('Webpages.index');
     }
 
 
     public function shop(){
-        return view('pages.shop');
+        return view('Webpages.shop');
     }
 
     public function cart(){
-        return view('pages.cart');
+        return view('Webpages.cart');
     }
 
     public function checkout(){
-        return view('pages.checkout');
+        return view('Webpages.checkout');
     }
 
     public function product(){
-        return view('pages.product-details');
+        return view('Webpages.product-details');
     }
 }
