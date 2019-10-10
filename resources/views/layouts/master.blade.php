@@ -9,14 +9,14 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>YourHome</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="{{asset('img/core-img/favicon.ico')}}">
+    <link rel="icon" href="{{asset('/img/core-img/favicon.ico')}}">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="{{asset('css/core-style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/core-style.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
 
 </head>
 
@@ -32,13 +32,20 @@
                     <div class="search-content">
                         <form action="#" method="get">
                             <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                            <button type="submit"><img src="img/core-img/search.png" alt=""></button>
+                            <button type="submit"><img src="/img/core-img/search.png" alt=""></button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
     <!-- Search Wrapper Area End -->
 
  <!-- ##### Main Content Wrapper Start ##### -->
@@ -48,7 +55,7 @@
 <div class="mobile-nav">
     <!-- Navbar Brand -->
     <div class="amado-navbar-brand">
-        <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+        <a href="{{route('home')}}"><img src="/img/core-img/logo.png" alt=""></a>
     </div>
     <!-- Navbar Toggler -->
     <div class="amado-navbar-toggler">
@@ -64,16 +71,52 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+            <a href="{{route('home')}}"><img src="/img/core-img/logo.png" alt=""></a>
+
+
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('shop')}}">Shop</a></li>
-                    <li><a href="{{route('product')}}">Product</a></li>
-                    <li><a href="{{route('cart')}}">Cart</a></li>
-                    <li><a href="{{route('checkout')}}">Checkout</a></li>
+                    <li class="{{Request::is('/') ? 'active' : '' }}"><a href="{{route('home')}}">Home</a></li>
+                    <li class="{{Request::is('shop') ? 'active' : '' }}"><a href="{{route('shop')}}">Shop</a></li>
+                    <li class="{{Request::is('product') ? 'active' : '' }}"><a href="{{route('product')}}">Product</a></li>
+                    <li class="{{Request::is('cart') ? 'active' : '' }}"><a href="{{route('cart')}}">Cart</a></li>
+                    <li class="{{Request::is('checkout') ? 'active' : '' }}"><a href="{{route('checkout')}}">Checkout</a></li>
+
+                     <!-- Right Side Of Navbar -->
+    <!-- Authentication Links -->
+    @guest
+        <li class="nav-item {{Request::is('login') ? 'active' : '' }}" >
+            <a class="nav-link" href="{{ url('/login') }}" style="color:green;">{{ __('Login') }}</a>
+        </li>
+        @if (Route::has('register'))
+            <li class="nav-item {{Request::is('register') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/register') }}" style="color:green;">{{ __('Register') }}</a>
+            </li>
+        @endif
+    @else
+        <li class="nav-item dropdown " >
+            <a style="color:green;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                Hello {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-left " id="dropMenu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " id="logout" href="{{ url('/logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
+    @endguest
+
+
+
                 </ul>
             </nav>
             <!-- Button Group -->
@@ -83,9 +126,9 @@
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+                <a href="{{route('cart')}}" class="cart-nav"><img src="/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                <a href="#" class="fav-nav"><img src="/img/core-img/favorites.png" alt=""> Favourite</a>
+                <a href="#" class="search-nav"><img src="/img/core-img/search.png" alt=""> Search</a>
             </div>
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">
@@ -96,10 +139,11 @@
             </div>
         </header>
         <!-- Header Area End -->
+
 @yield('content')
 
   <!-- ##### Newsletter Area Start ##### -->
-  <section class="newsletter-area section-padding-100-0">
+  <section class="newsletter-area section-padding-100-0" style="width:100%">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Newsletter Text -->
@@ -124,36 +168,8 @@
     <!-- ##### Newsletter Area End ##### -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  <!-- ##### Footer Area Start ##### -->
- <footer class="footer_area clearfix">
+ <footer class="footer_area clearfix" style="width:100%">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Single Widget Area -->
@@ -161,7 +177,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                            <a href="{{route('home')}}"><img src="/img/core-img/logo2.png" alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -178,20 +194,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                    <li class="nav-item {{Request::is('/')?'active':''}}">
+                                            <a class="nav-link" href="{{route('home')}}">Home</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
+                                        <li class="nav-item {{Request::is('shop')?'active':''}}">
+                                            <a class="nav-link" href="{{route('shop')}}">Shop</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
+                                        <li class="nav-item {{Request::is('product')?'active':''}}">
+                                            <a class="nav-link" href="{{route('product')}}">Product</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
+                                        <li class="nav-item {{Request::is('cart')?'active':''}}">
+                                            <a class="nav-link" href="{{route('cart')}}">Cart</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
+                                        <li class="nav-item {{Request::is('checkout')?'active':''}}">
+                                            <a class="nav-link" href="{{route('checkout')}}">Checkout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -205,15 +221,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('/js/jquery/jquery-2.2.4.min.js')}}"></script>
     <!-- Popper js -->
-    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('/js/popper.min.js')}}"></script>
     <!-- Bootstrap js -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
     <!-- Plugins js -->
-    <script src="{{asset('js/plugins.js')}}"></script>
+    <script src="{{asset('/js/plugins.js')}}"></script>
     <!-- Active js -->
-    <script src="{{asset('js/active.js')}}"></script>
+    <script src="{{asset('/js/active.js')}}"></script>
 
 </body>
 

@@ -11,3 +11,18 @@
     /* ---------------------------------------
     ##### - PLACE YOUR CUSTOM CSS HERE - #####
     --------------------------------------- */
+
+    #logout::after{
+width: 0;
+    }
+
+    #dropMenu{
+        min-width: 7rem !important;
+        padding: .5rem 17px !important;
+        transform: translate3d(91px, -8px, 0px) !important;
+    }
+
+    #formReset{
+        margin-top:-1000px !important;
+        left:100px;
+    }
