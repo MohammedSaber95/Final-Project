@@ -26,3 +26,7 @@ width: 0;
         margin-top:-1000px !important;
         left:100px;
     }
+
+    .zoom:hover{
+        transform: scale(1.3);
+    }

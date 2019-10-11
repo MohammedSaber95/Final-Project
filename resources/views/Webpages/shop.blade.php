@@ -11,13 +11,14 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
-                        <li class="active"><a href="#">Chairs</a></li>
-                        <li><a href="#">Beds</a></li>
-                        <li><a href="#">Accesories</a></li>
-                        <li><a href="#">Furniture</a></li>
-                        <li><a href="#">Home Deco</a></li>
-                        <li><a href="#">Dressings</a></li>
-                        <li><a href="#">Tables</a></li>
+                    <li class="{{Request::is('shop/1') ? 'active' : ''}}"><a href="1">Chairs</a></li>
+                        <li class="{{Request::is('shop/2') ? 'active' : ''}}"><a href="2">Beds</a></li>
+                        <li class="{{Request::is('shop/3') ? 'active' : ''}}"><a  href="3">Accesories</a></li>
+                        <li class="{{Request::is('shop/4') ? 'active' : ''}}"><a  href="4">Furniture</a></li>
+                        <li class="{{Request::is('shop/5') ? 'active' : ''}}"><a  href="5">Home Deco</a></li>
+                        <li class="{{Request::is('shop/6') ? 'active' : ''}}"><a  href="6">Dressings</a></li>
+                        <li class="{{Request::is('shop/7') ? 'active' : ''}}"><a  href="7">Tables</a></li>
+                        <li class="{{Request::is('shop/8') ? 'active' : ''}}"><a  href="8">Night Stands</a></li>
                     </ul>
                 </div>
             </div>
@@ -137,14 +138,17 @@
 
                 <div class="row">
 
+    {{-- this the beginnig of the products which display with ajax  --}}
+
                     <!-- Single Product Area -->
+                    @foreach($products as $product)
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="img/product-img/product1.jpg" alt="">
+                            <img src="{{$product -> image1}}" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product2.jpg" alt="">
+                                <img class="hover-img zoom" src="{{$product -> image1}}" alt="">
                             </div>
 
                             <!-- Product Description -->
@@ -152,9 +156,9 @@
                                 <!-- Product Meta Data -->
                                 <div class="product-meta-data">
                                     <div class="line"></div>
-                                    <p class="product-price">$180</p>
+                                    <p class="product-price">${{$product -> price}}</p>
                                     <a href="product-details.html">
-                                        <h6>Modern Chair</h6>
+                                        <h6>{{$product -> name}}</h6>
                                     </a>
                                 </div>
                                 <!-- Ratings & Cart -->
@@ -173,8 +177,9 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
-                    <!-- Single Product Area -->
+                    {{-- <!-- Single Product Area -->
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -358,21 +363,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="row">
+
                     <div class="col-12">
                         <!-- Pagination -->
                         <nav aria-label="navigation">
                             <ul class="pagination justify-content-end mt-50">
-                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                                {{$products->links()}}
                             </ul>
                         </nav>
                     </div>
-                </div>
             </div>
         </div>
     </div>

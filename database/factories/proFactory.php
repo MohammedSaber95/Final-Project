@@ -15,7 +15,7 @@ $factory->define(Product::class, function (Faker $faker) {
 'price'=>$faker->numberBetween(1,10),
 'color'=>$faker->sentence(4),
 'user_id'=>$faker->numberBetween(1,10),
-'category_id'=>$faker->numberBetween(1,10),
+'category_id'=>$faker->numberBetween(1,7),
 'cart_id'=>$faker->numberBetween(1,10),
     ];
 });
