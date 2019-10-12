@@ -26,6 +26,26 @@
   <link rel="stylesheet" href="{{asset('dashboard/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<style>
+  body{
+
+background-color: #eee; 
+}
+
+table th , table td{
+text-align: center;
+}
+
+table tr:nth-child(even){
+background-color: #BEF2F5
+}
+.pagination{
+  text-align: center;
+}
+.pagination li:hover{
+cursor: pointer;
+}
+</style>
 </head>
 <div class="wrapper">
 
@@ -40,7 +60,7 @@
         <a href="{{route('index')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+      <a href="{{route('contact')}}" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -206,13 +226,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('chartJs')}}" class="nav-link">
+                <a href="{{route('Admins')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Admins</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('flot')}}" class="nav-link">
+                <a href="{{route('users')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
                 </a>
@@ -230,13 +250,13 @@
             <ul class="nav nav-treeview">
            
               <li class="nav-item">
-                <a href="{{route('icons')}}" class="nav-link">
+                <a href="{{route('Products')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{route('buttons')}}" class="nav-link">
+              <a href="{{route('Categories')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categories</p>
                 </a>

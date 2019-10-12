@@ -1,80 +1,34 @@
 <?php
 Route::prefix('dashboard')->group(function(){
-    Route::get('/index' , function(){
-        return  view('dash_pages.index');
-    })->name('index');
-    Route::get('/widgets' , function(){
-        return view('dash_pages.pages.widgets');
-    })->name('widgits');
-    Route::get('/ChartJs' , function(){
-        return view('dash_pages.pages.charts.chartjs');
-    })->name('chartJs');
-    Route::get('/flot' , function(){
-        return view('dash_pages.pages.charts.flot');
-    })->name('flot');
-    Route::get('/inline' , function(){
-        return view('dash_pages.pages.charts.inline');
-    })->name('Inline');
-    Route::get('/buttons' , function(){
-        return view('dash_pages.pages.UI.buttons');
-    })->name('buttons');
-    Route::get('/icons' , function(){
-        return view('dash_pages.pages.UI.icons');
-    })->name('icons');
-    Route::get('/modals' , function(){
-        return view('dash_pages.pages.UI.modals');
-    })->name('modals');
-    Route::get('/navbar' , function(){
-        return view('dash_pages.pages.UI.navbar');
-    })->name('navbar');
-    Route::get('/sliders' , function(){
-        return view('dash_pages.pages.UI.sliders');
-    })->name('sliders');
-    Route::get('/data' , function(){
-        return view('dash_pages.pages.tables.data');
-    })->name('datatables');
-    Route::get('/jsgrid' , function(){
-        return view('dash_pages.pages.tables.jsgrid');
-    })->name('jsgrid');
-    Route::get('/simple' , function(){
-        return view('dash_pages.pages.tables.simple');
-    })->name('simple');
-    Route::get('/calendar' , function(){
-        return view('dash_pages.pages.calendar');
-    })->name('calendar');
-    Route::get('/gallery' , function(){
-        return view('dash_pages.pages.gallery');
-    })->name('gallery');
-    Route::get('/compose' , function(){
-        return view('dash_pages.pages.mailbox.compose');
-    })->name('compose');
-    Route::get('/mailbox' , function(){
-        return view('dash_pages.pages.mailbox.mailbox');
-    })->name('inbox');
-    Route::get('/read' , function(){
-        return view('dash_pages.pages.mailbox.read-mail');
-    })->name('read');
-    Route::get('/404' , function(){
-        return view('dash_pages.pages.Extra.404');
-    })->name('404');
-    Route::get('/500' , function(){
-        return view('dash_pages.pages.Extra.500');
-    })->name('500');
-    Route::get('/contacts' , function(){
-        return view('dash_pages.pages.Extra.contacts');
-    })->name('contact');
-    Route::get('/e-commerce' , function(){
-        return view('dash_pages.pages.Extra.e_commerce');
-    })->name('e-commerce');
-    Route::get('/language-menu' , function(){
-        return view('dash_pages.pages.Extra.language-menu');
-    })->name('langs');
-    Route::get('/login' , function(){
-        return view('dash_pages.pages.Extra.login');
-    })->name('login');
-    Route::get('/register' , function(){
-        return view('dash_pages.pages.Extra.register');
-    })->name('register');
+    Route::get('/index' ,'dashboardrouts@index')->name('index');
+    Route::get('/widgets' , 'dashboardrouts@widgets')->name('widgits');
+    Route::get('/users' , 'Usersctcontroller@index')->name('users');
+    Route::get('/Admins' , 'Adminsctcontroller@index')->name('Admins');
+    Route::get('/inline' , 'dashboardrouts@Inline')->name('Inline');
+    Route::get('/Categories' ,'Categorycontroller@index')->name('Categories');
+    // Route::resources('categories' ,'Categorycontroller');
+    // Route::get('/Categories' , function(){
+    //     return view('dash_pages.pages.Categories&Products.Categories');
+    // })->name('Categories');
+    Route::get('/Products' , 'Productcontroller@index')->name('Products');
+    Route::get('/modals' , 'dashboardrouts@modals')->name('modals');
+    Route::get('/navbar' , 'dashboardrouts@navbar')->name('navbar');
+    Route::get('/sliders' , 'dashboardrouts@sliders')->name('sliders');
+    Route::get('/data' , 'dashboardrouts@data')->name('datatables');
+    Route::get('/jsgrid' , 'dashboardrouts@jsgrid')->name('jsgrid');
+    Route::get('/simple' , 'dashboardrouts@simple')->name('simple');
+    Route::get('/calendar' , 'dashboardrouts@calendar')->name('calendar');
+    Route::get('/gallery' , 'dashboardrouts@gallery')->name('gallery');
+    Route::get('/compose' , 'dashboardrouts@compose')->name('compose');
+    Route::get('/mailbox','dashboardrouts@mailbox')->name('inbox');
+    Route::get('/read' , 'dashboardrouts@read')->name('read');
+    Route::get('/page404' , 'dashboardrouts@page404')->name('404');
+    Route::get('/page500' , 'dashboardrouts@page500')->name('500');
+    Route::get('/contacts' , 'dashboardrouts@contacts')->name('contact');
+    Route::get('/e_commerce' , 'dashboardrouts@e_commerce')->name('e-commerce');
+    Route::get('/language_menu' , 'dashboardrouts@language_menu')->name('langs');
+    Route::get('/login' , 'dashboardrouts@login')->name('login');
+    Route::get('/register' , 'dashboardrouts@register')->name('register');
 });
     // Route::get('/check' , function(){
     //     return "this dashboard";
