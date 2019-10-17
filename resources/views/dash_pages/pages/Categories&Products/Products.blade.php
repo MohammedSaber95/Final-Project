@@ -1,7 +1,8 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
-  <h2>Select Number Of Rows</h2>
+ <button class="btn btn-success"><a href="{{route('AddProducts')}}">Add Products</button>
+  <h2>Select Number Of Products</h2>
       <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
          <select class  ="form-control" name="state" id="maxRows">
            <option value="5000">Show ALL Rows</option>
@@ -15,7 +16,7 @@
           </select>
         </div>
 
-<table class="table table-striped table-class" id= "table-id">
+<table class="table table-striped table-class" >
 <tr>
   <th>Id</th>
   <th>Name</th>
@@ -36,13 +37,13 @@
   <td>{{$prods->id}}</td>
   <td>{{$prods->name}}</td>
   <td>{{$prods->description}}</td>
-  <td>{{$prods->img1}}</td>
-  <td>{{$prods->img2}}</td>
-  <td>{{$prods->img3}}</td>
+  <td><img src="{{asset('img/product-img/'.$prods->image1)}}"height=100px;width=100px;/></td>
+  <td><img src="{{asset('img/product-img/'.$prods->image2)}}"height=100px;width=100px;/></td>
+  <td><img src="{{asset('img/product-img/'.$prods->image3)}}"height=100px;width=100px;/></td>
   <td>{{$prods->price}}</td>
   <td>{{$prods->color}}</td>
-  <td>  <a href="#" class="btn btn-primary">Edite</a>
-    <a href="#" class="btn btn-warning">Delete</a></td>
+  <td>  <a href="#" class="btn btn-primary">Edit</a><br>
+    <a href="#" class="btn btn-danger">Delete</a></td>
 </tr>
 @endforeach
 
@@ -167,18 +168,5 @@ $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
 
 
 
-$(function(){
-// Just to append id number for each row  
-$('table tr:eq(0)').prepend('<th> ID </th>')
 
-var id = 0;
-
-$('table tr:gt(0)').each(function(){	
-  id++
-  $(this).prepend('<td>'+id+'</td>');
-});
-})
-
-//  Developed By Yasser Mas 
-// yasser.mas2@gmail.com  
 @endsection

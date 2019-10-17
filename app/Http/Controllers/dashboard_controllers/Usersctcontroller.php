@@ -15,7 +15,7 @@ class Usersctcontroller extends Controller
      */
     public function index()
     {
-        $users=User::All();
+        $users=User::orderby('created_at', 'asc')->get();
         return view('dash_pages.pages.Admins & Users.users' , compact('users'));
     }
 
@@ -37,7 +37,27 @@ class Usersctcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $User=new User();
+        $User->name=$request->input('name');
+        $User->email=$request->input('email');
+        $User->password=$request->input('password');
+        $User->role=$request->input('role');
+        // $users->image=$request->input('image');
+        if($request->hasfile('image')){
+            $file=$request->file('image');
+            $extention=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extention;
+            $file->move('img/users-img/',$filename);
+            $User->image=$filename;
+
+        }else{
+            return $request;
+            $User->image='';
+        }
+        $User->save();
+        $users=User::orderby('created_at', 'asc')->get();
+        return view('dash_pages.pages.Admins & Users.users' , compact('users'));
+        
     }
 
     /**
@@ -57,9 +77,9 @@ class Usersctcontroller extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -80,8 +100,9 @@ class Usersctcontroller extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $users=User::find($id);
+        return redirect('dashboard/users');
     }
 }

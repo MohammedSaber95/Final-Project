@@ -3,14 +3,15 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/index' ,'dashboardrouts@index')->name('index');
     Route::get('/widgets' , 'dashboardrouts@widgets')->name('widgits');
     Route::get('/users' , 'Usersctcontroller@index')->name('users');
+    Route::post('/users' , 'Usersctcontroller@store')->name('Addusers');
+
     Route::get('/Admins' , 'Adminsctcontroller@index')->name('Admins');
     Route::get('/inline' , 'dashboardrouts@Inline')->name('Inline');
     Route::get('/Categories' ,'Categorycontroller@index')->name('Categories');
-    // Route::resources('categories' ,'Categorycontroller');
-    // Route::get('/Categories' , function(){
-    //     return view('dash_pages.pages.Categories&Products.Categories');
-    // })->name('Categories');
+   
     Route::get('/Products' , 'Productcontroller@index')->name('Products');
+    Route::get('/AddProducts' , 'Addproductscontroller@index')->name('AddProducts');
+
     Route::get('/modals' , 'dashboardrouts@modals')->name('modals');
     Route::get('/navbar' , 'dashboardrouts@navbar')->name('navbar');
     Route::get('/sliders' , 'dashboardrouts@sliders')->name('sliders');

@@ -1,7 +1,60 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
-  <h2>Select Number Of Rows</h2>
+    {{-- start modal --}}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal" >
+    <b> Add anew User</b>
+   </button>
+   
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document">
+       <div class="modal-content"style="background-color:chocolate!important">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+         <form action="{{route('Addusers')}}" method="post" enctype="multipart/form-data" >
+          @csrf
+             <div class="form-group">
+                 <label for="cc-name" class="control-label mb-1">Name</label>
+                 <input id="cc-name"  type="text" class="form-control name" aria-required="true" aria-invalid="false" name="name">
+             </div>
+             <div class="form-group ">
+                 <label for="cc-name" class="control-label mb-1">Email</label>
+                 <input id="cc-email"  type="email" class="form-control cc-name valid email"name="email" >
+             </div>
+              <div class="form-group">
+                 <label for="cc-number" class="control-label mb-1">password</label>
+                 <input id="cc-number"  type="password" class="form-control "name="password" >
+             </div>
+             <div class="form-group">
+             <label for="cc-name" class="control-label mb-1">role</label>
+             <input id="cc-name"  type="text" class="form-control " name="role">
+         </div>
+         <div class="form-group">
+            <label for="cc-image" class="control-label mb-1">Image</label>
+            <input id="cc-name"  type="file" class="form-control " name="image">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save"> 
+      </form>
+
+        </div>
+
+            
+         </div>
+         <div class="modal-footer">
+         </div>
+       </div>
+     </div>
+ 
+   <section class="content">
+       <div class="container-fluid">
+  <h2>Select Number Of Users</h2>
       <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
          <select class  ="form-control" name="state" id="maxRows">
            <option value="5000">Show ALL Rows</option>
@@ -23,23 +76,23 @@
   <th>Email</th>
   <th>role</th>
   <th>Image</th>
-  <th>Control</th></tr>
-@foreach ($users as $user)
-    
-@endforeach
+  <th>Control</th>
+</tr>
+@foreach($users as $user)
+
 <tr>
   <td>{{$user->id}}</td>
   <td>{{$user->name}}</td>
   <td>{{$user->email}}</td>
   <td>{{$user->role}}</td>
-  <td>{{$user->image}}</td>
+  <td><img src="{{asset('img/users-img/'.$user->image)}}"height=100px;width=100px;/></td>
   <td>  <a href="#" class="btn btn-primary">Edite</a>
     <a href="#" class="btn btn-warning">Delete</a></td>
 </tr>
 
-
+@endforeach
 </table>
-
+</div></section>
 <!--		Start Pagination -->
     <div class='pagination-container' >
       <nav>
@@ -159,18 +212,5 @@ $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
 
 
 
-$(function(){
-// Just to append id number for each row  
-$('table tr:eq(0)').prepend('<th> ID </th>')
 
-var id = 0;
-
-$('table tr:gt(0)').each(function(){	
-  id++
-  $(this).prepend('<td>'+id+'</td>');
-});
-})
-
-//  Developed By Yasser Mas 
-// yasser.mas2@gmail.com  
 @endsection

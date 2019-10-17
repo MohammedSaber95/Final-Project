@@ -386,7 +386,8 @@ class ComposerStaticInitb880ba09f163f5c1f32207e92a3b2c05
     );
 
     public static $classMap = array (
-        'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+        'App\\Cart' => __DIR__ . '/../..' . '/app/CartOld.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -398,6 +399,12 @@ class ComposerStaticInitb880ba09f163f5c1f32207e92a3b2c05
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\Addproductscontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/Addproductscontroller.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\Adminsctcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/Adminsctcontroller.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\Categorycontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/Categorycontroller.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\Productcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/Productcontroller.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\Usersctcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/Usersctcontroller.php',
+        'App\\Http\\Controllers\\dashboard_controllers\\dashboardrouts' => __DIR__ . '/../..' . '/app/Http/Controllers/dashboard_controllers/dashboardrouts.php',
         'App\\Http\\Controllers\\pagecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/pagecontroller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

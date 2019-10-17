@@ -1,21 +1,7 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
-  <h2>Select Number Of Rows</h2>
-      <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
-         <select class  ="form-control" name="state" id="maxRows">
-           <option value="5000">Show ALL Rows</option>
-           <option value="5">5</option>
-           <option value="10">10</option>
-           <option value="15">15</option>
-           <option value="20">20</option>
-           <option value="50">50</option>
-           <option value="70">70</option>
-           <option value="100">100</option>
-          </select>
-         
-        </div>
-
+  
 <table class="table table-striped table-class" id= "table-id">
 <tr>
   <th>Id</th>
@@ -35,8 +21,8 @@
   <td>{{$item->description}}</td>
   <td>{{$item->status}}</td>
   <td>{{$item->image}}</td>
-  <td>  <a href="#" class="btn btn-primary">Edite</a>
-    <a href="#" class="btn btn-warning">Delete</a></td>
+  <td>  <a href="#" class="btn btn-primary">Edit</a>
+    <a href="#" class="btn btn-danger">Delete</a></td>
 </tr>
 @endforeach
 
@@ -161,18 +147,5 @@ $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
 
 
 
-$(function(){
-// Just to append id number for each row  
-$('table tr:eq(0)').prepend('<th> ID </th>')
 
-var id = 0;
-
-$('table tr:gt(0)').each(function(){	
-  id++
-  $(this).prepend('<td>'+id+'</td>');
-});
-})
-
-//  Developed By Yasser Mas 
-// yasser.mas2@gmail.com  
 @endsection
