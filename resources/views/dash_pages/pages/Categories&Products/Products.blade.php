@@ -1,22 +1,23 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
- <button class="btn btn-success"><a href="{{route('AddProducts')}}">Add Products</button>
+ 
   <h2>Select Number Of Products</h2>
-      <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
-         <select class  ="form-control" name="state" id="maxRows">
-           <option value="5000">Show ALL Rows</option>
-           <option value="5">5</option>
-           <option value="10">10</option>
-           <option value="15">15</option>
-           <option value="20">20</option>
-           <option value="50">50</option>
-           <option value="70">70</option>
-           <option value="100">100</option>
-          </select>
-        </div>
+  <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+    <select class  ="form-control" name="state" id="maxRows">
+      <option value="5000">Show ALL Rows</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="70">70</option>
+      <option value="100">100</option>
+     </select>
+    
+   </div>
 
-<table class="table table-striped table-class" >
+<table class="table table-striped table-class" id= "table-id">
 <tr>
   <th>Id</th>
   <th>Name</th>
@@ -42,7 +43,7 @@
   <td><img src="{{asset('img/product-img/'.$prods->image3)}}"height=100px;width=100px;/></td>
   <td>{{$prods->price}}</td>
   <td>{{$prods->color}}</td>
-  <td>  <a href="#" class="btn btn-primary">Edit</a><br>
+  <td>  <a href="#" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-danger">Delete</a></td>
 </tr>
 @endforeach
@@ -50,7 +51,7 @@
 </table>
 
 <!--		Start Pagination -->
-    <div class='pagination-container' >
+    <div class='pagination-container' style="text-align: center">
       <nav>
         <ul class="pagination">
           
@@ -161,9 +162,6 @@ $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
 
       // END OF PAGINATION 
 }	
-
-
-
 
 
 

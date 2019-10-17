@@ -80,7 +80,7 @@
                 <ul>
                     <li class="{{Request::is('/') ? 'active' : '' }}"><a href="{{route('home')}}">Home</a></li>
                     <li class="{{Request::is('shop/1') ? 'active' : '' }}"><a href="{{url('shop/1')}}">Shop</a></li>
-                    <li class="{{Request::is('product') ? 'active' : '' }}"><a href="{{route('product')}}">Product</a></li>
+                    <li class="{{Request::is('product/1') ? 'active' : '' }}"><a href="{{url('product/1')}}">Product</a></li>
                     <li class="{{Request::is('cart') ? 'active' : '' }}"><a href="{{route('cart')}}">Cart</a></li>
                     <li class="{{Request::is('checkout') ? 'active' : '' }}"><a href="{{route('checkout')}}">Checkout</a></li>
 
@@ -200,8 +200,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                         <li class="nav-item {{Request::is('shop/1')?'active':''}}">
                                             <a class="nav-link" href="{{url('shop/1')}}">Shop</a>
                                         </li>
-                                        <li class="nav-item {{Request::is('product')?'active':''}}">
-                                            <a class="nav-link" href="{{route('product')}}">Product</a>
+                                        <li class="nav-item {{Request::is('product/1')?'active':''}}">
+                                            <a class="nav-link" href="{{url('product/1')}}">Product</a>
                                         </li>
                                         <li class="nav-item {{Request::is('cart')?'active':''}}">
                                             <a class="nav-link" href="{{route('cart')}}">Cart</a>
@@ -230,7 +230,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{asset('/js/plugins.js')}}"></script>
     <!-- Active js -->
     <script src="{{asset('/js/active.js')}}"></script>
-
+    @yield('script')
 </body>
 
 </html>

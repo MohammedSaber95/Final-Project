@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="{{asset('dashboard/plugins/jqvmap/jqvmap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dashboard/dist/css/adminlte.min.css')}}">
+  <!-- bootstrap3 style -->
+  <link rel="stylesheet" href="{{asset('dashboard/dist/css/bootstrap3.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
@@ -536,6 +538,7 @@ cursor: pointer;
 <script src="{{asset('dashboard/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dashboard/dist/js/demo.js')}}"></script>
+
 <script>
 @yield('script')
 </script>

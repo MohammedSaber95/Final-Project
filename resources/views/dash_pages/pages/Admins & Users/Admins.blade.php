@@ -89,7 +89,7 @@
       </table>
           </div></section>
       <!--		Start Pagination -->
-          <div class='pagination-container ' >
+          <div class='pagination-container ' style="text-align: center">
             <nav>
               <ul class="pagination">
                 

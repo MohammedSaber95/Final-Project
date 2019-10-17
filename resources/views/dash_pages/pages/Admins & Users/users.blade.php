@@ -56,7 +56,7 @@
        <div class="container-fluid">
   <h2>Select Number Of Users</h2>
       <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
-         <select class  ="form-control" name="state" id="maxRows">
+         <select class="form-control" name="state" id="maxRows">
            <option value="5000">Show ALL Rows</option>
            <option value="5">5</option>
            <option value="10">10</option>
@@ -86,7 +86,7 @@
   <td>{{$user->email}}</td>
   <td>{{$user->role}}</td>
   <td><img src="{{asset('img/users-img/'.$user->image)}}"height=100px;width=100px;/></td>
-  <td>  <a href="#" class="btn btn-primary">Edite</a>
+  <td>  <a href="#" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-warning">Delete</a></td>
 </tr>
 
@@ -94,11 +94,12 @@
 </table>
 </div></section>
 <!--		Start Pagination -->
-    <div class='pagination-container' >
+
+    <div class='pagination-container ' style="text-align: center">
       <nav>
         <ul class="pagination">
           
-          <li data-page="prev" >
+          <li data-page="prev" class="page-item">
                    <span> < <span class="sr-only">(current)</span></span>
                   </li>
          <!--	Here the JS Function Will Add the Rows -->

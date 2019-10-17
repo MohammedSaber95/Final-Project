@@ -9,9 +9,9 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker -> name,
 'description' =>$faker->sentence(5),
-'image1'=>$faker->imageUrl(480,640),
-'image2'=>$faker->imageUrl(480,640),
-'image3'=>$faker->imageUrl(480,640),
+'image1'=>'http://lorempixel.com/480/640/nature/',
+'image2'=>'http://lorempixel.com/480/640/nature/',
+'image3'=>'http://lorempixel.com/480/640/nature/',
 'price'=>$faker->numberBetween(1,10),
 'color'=>$faker->hexcolor ,
 'user_id'=>$faker->numberBetween(1,10),

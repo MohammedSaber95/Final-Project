@@ -10,7 +10,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'name' => $faker -> name,
         'description' => $faker ->sentence(5),
         'status'=>$faker ->boolean(),
-        'image' => $faker->imageUrl(480,640),
+        'image' => 'http://lorempixel.com/480/640/nature/',
         'user_id' => $faker -> numberBetween(1,10),
     ];
 });
