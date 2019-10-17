@@ -13,7 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
 'image2'=>$faker->imageUrl(480,640),
 'image3'=>$faker->imageUrl(480,640),
 'price'=>$faker->numberBetween(1,10),
-'color'=>$faker->sentence(4),
+'color'=>$faker->hexcolor ,
 'user_id'=>$faker->numberBetween(1,10),
 'category_id'=>$faker->numberBetween(1,7),
 'cart_id'=>$faker->numberBetween(1,10),

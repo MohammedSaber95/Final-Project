@@ -6,8 +6,9 @@
             <div class="amado-pro-catagory clearfix">
 
                 <!-- Single Catagory -->
+                @if(count($cats) > 0 )
                 @foreach ($cats as $item)
-              
+                    @if($item -> status === 1 ))
                 <div class="single-products-catagory clearfix">
                 <a href="shop\{{$item -> id}}">
                     <img src="{{$item ->image}}" alt="">
@@ -19,7 +20,14 @@
                         </div>
                     </a>
                 </div>
+               
+                @endif
                 @endforeach
+                @else
+                <div class="single-products-catagory clearfix">
+                    <p>There are no categories to display </p>
+                </div>
+                @endif
             </div>
         </div>
         <!-- Product Catagories Area End -->
