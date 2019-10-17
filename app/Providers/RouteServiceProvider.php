@@ -16,7 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
     //made dashboard_controller
-    protected $dashboard_namespace = 'App\Http\Controllers\dashboard_Controllers';
+    protected $dashboard_namespace = 'App\Http\Controllers\dashboard_controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
