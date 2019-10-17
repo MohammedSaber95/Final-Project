@@ -10,7 +10,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'name' => $faker -> name,
         'description' => $faker ->sentence(5),
         'status'=>$faker ->boolean(),
-        'image' => 'https://source.unsplash.com/random',
+        'image' => $faker->imageUrl(480,640),
         'user_id' => $faker -> numberBetween(1,10),
     ];
 });

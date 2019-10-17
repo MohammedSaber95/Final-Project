@@ -73,7 +73,7 @@
                                 <p>Showing 1-8 0f 25</p>
                                 <div class="view d-flex">
                                     <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                    <a href="../list"><i class="fa fa-bars" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <!-- Sorting -->
@@ -109,6 +109,7 @@
     {{-- this the beginnig of the products which display with ajax  --}}
 
                     <!-- Single Product Area -->
+                @if(count($products) > 0)
                     @foreach($products as $product)
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                         <div class="single-product-wrapper">
@@ -139,14 +140,20 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
                                     <div class="cart">
-                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="/img/core-img/cart.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @endforeach
-
+                    @else
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                        <div class="single-product-wrapper">
+                            <p>Adding Products Soon</p>
+                        </div>
+                    </div>
+                    @endif
                     {{-- <!-- Single Product Area -->
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
                         <div class="single-product-wrapper">
