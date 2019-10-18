@@ -95,16 +95,17 @@
 </div></section>
 <!--		Start Pagination -->
 
-    <div class='pagination-container ' style="text-align: center">
-      <nav>
-        <ul class="pagination">
+
+    <div class='pagination-container'>
+      <nav style="text-align:center">
+        <ul class="pagination justify-content-center">
           
           <li data-page="prev" class="page-item">
-                   <span> < <span class="sr-only">(current)</span></span>
+                   <span class="page-link"> < <span class="sr-only">(current)</span></span>
                   </li>
          <!--	Here the JS Function Will Add the Rows -->
       <li data-page="next" id="prev">
-                     <span> > <span class="sr-only">(current)</span></span>
+                     <span class="page-link"> > <span class="sr-only">(current)</span></span>
                   </li>
         </ul>
       </nav>
@@ -162,8 +163,8 @@ if (totalRows > maxRows){						// if tr total rows gt max rows option
 var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..  
                      //	numbers of pages 
 for (var i = 1; i <= pagenum ;){			// for each page append pagination li 
-$('.pagination #prev').before('<li data-page="'+i+'">\
-            <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
+$('.pagination #prev').before('<li data-page="'+i+'" class="page-item">\
+            <span class="page-link">'+ i++ +'<span class="sr-only">(current)</span></span>\
           </li>').show();
 }											// end for i 
 } 												// end if row count > max rows

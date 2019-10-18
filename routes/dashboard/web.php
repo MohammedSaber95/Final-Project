@@ -8,9 +8,13 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/Admins' , 'Adminsctcontroller@index')->name('Admins');
     Route::get('/inline' , 'dashboardrouts@Inline')->name('Inline');
     Route::get('/Categories' ,'Categorycontroller@index')->name('Categories');
+
+
+    Route::resource('/comments' ,'commentController');
+    Route::resource('/orders' ,'orderController');
    
     Route::get('/Products' , 'Productcontroller@index')->name('Products');
-    Route::get('/AddProducts' , 'Addproductscontroller@index')->name('AddProducts');
+    Route::post('/AddProducts' , 'Addproductscontroller@store')->name('AddProducts');
 
     Route::get('/modals' , 'dashboardrouts@modals')->name('modals');
     Route::get('/navbar' , 'dashboardrouts@navbar')->name('navbar');

@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">Dashboard </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -87,6 +87,8 @@
           <!-- ./col -->
         </div>
         <!-- /.row -->
+
+{{-- 
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
@@ -99,14 +101,6 @@
                   Sales
                 </h3>
                 <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -122,9 +116,10 @@
                 </div>
               </div><!-- /.card-body -->
             </div>
-            <!-- /.card -->
+            <!-- /.card --> --}}
 
-            <!-- DIRECT CHAT -->
+
+            {{-- <!-- DIRECT CHAT -->
             <div class="card direct-chat direct-chat-primary">
               <div class="card-header">
                 <h3 class="card-title">Direct Chat</h3>
@@ -324,7 +319,7 @@
               </div>
               <!-- /.card-footer-->
             </div>
-            <!--/.direct-chat -->
+            <!--/.direct-chat --> --}}
 
             <!-- TO DO List -->
             <div class="card">
@@ -461,7 +456,8 @@
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
-            <!-- Map card -->
+
+            {{-- <!-- Map card -->
             <div class="card bg-gradient-primary">
               <div class="card-header border-0">
                 <h3 class="card-title">
@@ -562,9 +558,9 @@
               </div>
               <!-- /.card-footer -->
             </div>
-            <!-- /.card -->
+            <!-- /.card --> --}}
 
-            <!-- Calendar -->
+            {{-- <!-- Calendar -->
             <div class="card bg-gradient-success">
               <div class="card-header border-0">
 
@@ -611,5 +607,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-    
+     --}}
 @endsection

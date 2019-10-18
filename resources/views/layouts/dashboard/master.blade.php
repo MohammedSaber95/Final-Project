@@ -6,6 +6,7 @@
   <title>AdminLTE 3 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('dashboard/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
@@ -19,7 +20,6 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dashboard/dist/css/adminlte.min.css')}}">
   <!-- bootstrap3 style -->
-  <link rel="stylesheet" href="{{asset('dashboard/dist/css/bootstrap3.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="{{asset('dashboard/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 <style>
   body{
 
@@ -88,6 +89,7 @@ cursor: pointer;
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
+
             <!-- Message Start -->
             <div class="media">
               <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -201,15 +203,15 @@ cursor: pointer;
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('index')}}" class="nav-link active">
+          <a href="{{route('index')}}" class="nav-link {{Request::is('dashboard/index')?'active':''}}" >
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('widgits')}}" class="nav-link">
+          {{-- <li class="nav-item">
+            <a href="{{route('widgits')}}" class="nav-link {{Request::is('dashboard/widgets')?'active':''}}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
@@ -217,32 +219,32 @@ cursor: pointer;
               </p>
             </a>
           </li>
-      
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+       --}}
+          <li class="nav-item has-treeview {{Request::is('dashboard/users')?'menu-open':''}}{{Request::is('dashboard/Admins')?'menu-open':''}}">
+            <a href="#" class="nav-link {{Request::is('dashboard/users')?'active':''}}{{Request::is('dashboard/Admins')?'active':''}}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Admins & Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview ">
               <li class="nav-item">
-                <a href="{{route('Admins')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{route('Admins')}}" class="nav-link {{Request::is('dashboard/Admins')?'active':''}}">
+                  
                   <p>Admins</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('users')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="{{route('users')}}" class="nav-link {{Request::is('dashboard/users')?'active':''}}">
+                  
                   <p>Users</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{Request::is('dashboard/Products')?'menu-open':''}}{{Request::is('dashboard/Categories')?'menu-open':''}}">
+            <a href="#" class="nav-link {{Request::is('dashboard/Products')?'active':''}}{{Request::is('dashboard/Categories')?'active':''}}">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Products & Categories
@@ -251,20 +253,47 @@ cursor: pointer;
             </a>
             <ul class="nav nav-treeview">
            
-              <li class="nav-item">
-                <a href="{{route('Products')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Products</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="{{route('Categories')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a href="{{route('Products')}}" class="nav-link {{Request::is('dashboard/Products')?'active':''}}">
+                    
+                    <p>Products</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                <a href="{{route('Categories')}}" class="nav-link {{Request::is('dashboard/Categories')?'active':''}}">
+                    
+                    <p>Categories</p>
+                  </a>
+                </li>
             </ul>
           </li>
+          
+
+
+          {{----- Comments Table -----}}
+          <li class="nav-item menu-open">
+              <a href="{{route('comments.index')}}" class="nav-link {{Request::is('dashboard/comments')?'active':''}}" >
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Comments
+                  </p>
+                </a>
+              </li>
+
+
+
+               {{----- Orders Table -----}}
+          <li class="nav-item menu-open">
+              <a href="{{route('orders.index')}}" class="nav-link {{Request::is('dashboard/orders')?'active':''}}" >
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Orders
+                  </p>
+                </a>
+              </li>
+
+
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -275,7 +304,7 @@ cursor: pointer;
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('simple')}}" class="nav-link">
+                <a href="{{route('simple')}}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Simple Tables</p>
                 </a>
@@ -294,6 +323,11 @@ cursor: pointer;
               </li>
             </ul>
           </li>
+
+
+
+          <!-----------------Examples navbar -------------->
+{{--           
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
             <a href="{{route('calendar')}}" class="nav-link">
@@ -396,8 +430,13 @@ cursor: pointer;
               </li>
             
             </ul>
-          </li>
-          <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+          </li> --}}
+
+
+          <!--------------Multi level Examples ------------->
+
+
+          {{-- <li class="nav-header">MULTI LEVEL EXAMPLE</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
@@ -461,8 +500,14 @@ cursor: pointer;
               <i class="fas fa-circle nav-icon"></i>
               <p>Level 1</p>
             </a>
-          </li>
-          <li class="nav-header">LABELS</li>
+          </li> --}}
+
+
+
+
+       <!---------------Labels menu ------------------>
+
+          {{-- <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>
@@ -482,7 +527,9 @@ cursor: pointer;
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> --}}
+
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\dashboard_controllers;
-
-use App\Category;
-use Illuminate\Http\Request;
+use App\Order;
 use App\Http\Controllers\Controller;
 
-class Categorycontroller extends Controller
+use Illuminate\Http\Request;
+
+class orderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class Categorycontroller extends Controller
      */
     public function index()
     {
-        $Categories=Category::All();
-        return view('dash_pages.pages.Categories&Products.Categories' , compact('Categories'));
-        
+        return view('dash_pages.pages.Comments&Orders.order');
     }
 
     /**
@@ -44,10 +42,10 @@ class Categorycontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
         //
     }
@@ -55,10 +53,10 @@ class Categorycontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +65,10 @@ class Categorycontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,14 +76,11 @@ class Categorycontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
     }
-
-
-    
 }

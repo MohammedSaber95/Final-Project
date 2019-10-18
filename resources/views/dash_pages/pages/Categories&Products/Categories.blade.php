@@ -33,10 +33,16 @@
 <tr>
   <td>{{$item->id}}</td>
   <td>{{$item->name}}</td>
-  <td>{{$item->description}}</td>
-  <td>{{$item->status}}</td>
-  <td>{{$item->image}}</td>
-  <td>  <a href="#" class="btn btn-primary">Edit</a>
+  <td style="width:300px;">{{$item->description}}</td>
+  <td>
+    @if($item->status == 0 )
+      OFF 
+    @else
+      <strong>ON</strong>
+    @endif
+    </td>
+  <td ><img src="{{$item->image}}" style="width:150px;height:100px;" alt=""></td>
+  <td style="width:150px;">  <a href="#" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-danger">Delete</a></td>
 </tr>
 @endforeach
@@ -44,20 +50,22 @@
 </table>
 
 <!--		Start Pagination -->
-    <div class='pagination-container' style="text-align: center">
-      <nav>
-        <ul class="pagination">
-          
-          <li data-page="prev" >
-                   <span> < <span class="sr-only">(current)</span></span>
-                  </li>
-         <!--	Here the JS Function Will Add the Rows -->
-      <li data-page="next" id="prev">
-                     <span> > <span class="sr-only">(current)</span></span>
-                  </li>
-        </ul>
-      </nav>
-    </div>
+
+
+<div class='pagination-container'>
+    <nav style="text-align:center">
+      <ul class="pagination justify-content-center">
+        
+        <li data-page="prev" class="page-item">
+                 <span class="page-link"> < <span class="sr-only">(current)</span></span>
+                </li>
+       <!--	Here the JS Function Will Add the Rows -->
+    <li data-page="next" id="prev">
+                   <span class="page-link"> > <span class="sr-only">(current)</span></span>
+                </li>
+      </ul>
+    </nav>
+  </div>
 
 </div> <!-- 		End of Container -->
 
@@ -80,7 +88,7 @@ getPagination('#table-id');
 
 function getPagination (table){
 
-  var lastPage = 1 ; 
+var lastPage = 1 ; 
 
 $('#maxRows').on('change',function(evt){
 //$('.paginationprev').html('');						// reset pagination 
@@ -103,17 +111,17 @@ var totalRows = $(table+' tbody tr').length;		// numbers of rows
 $(table+' tr:gt(0)').each(function(){			// each TR in  table and not the header
 trnum++;									// Start Counter 
 if (trnum > maxRows ){						// if tr number gt maxRows
- 
- $(this).hide();							// fade it out 
+
+$(this).hide();							// fade it out 
 }if (trnum <= maxRows ){$(this).show();}// else fade in Important in case if it ..
 });											//  was fade out to fade it in 
 if (totalRows > maxRows){						// if tr total rows gt max rows option
 var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..  
-                     //	numbers of pages 
+                   //	numbers of pages 
 for (var i = 1; i <= pagenum ;){			// for each page append pagination li 
-$('.pagination #prev').before('<li data-page="'+i+'">\
-            <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
-          </li>').show();
+$('.pagination #prev').before('<li data-page="'+i+'" class="page-item">\
+          <span class="page-link">'+ i++ +'<span class="sr-only">(current)</span></span>\
+        </li>').show();
 }											// end for i 
 } 												// end if row count > max rows
 $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li 
@@ -139,21 +147,21 @@ $('.pagination li').removeClass('active');	// remove active class from all li
 $('.pagination [data-page="'+lastPage+'"]').addClass('active');// add active class to the clicked 
 // $(this).addClass('active');					// add active class to the clicked 
 $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
- trIndex++;								// tr index counter 
- // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
- if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
-   $(this).hide();		
- }else {$(this).show();} 				//else fade in 
+trIndex++;								// tr index counter 
+// if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+ $(this).hide();		
+}else {$(this).show();} 				//else fade in 
 }); 										// end of for each tr in table
 });										// end of on click pagination list
 
 }).val(5).change();
 
-              // end of on select change 
+            // end of on select change 
 
 
 
-      // END OF PAGINATION 
+    // END OF PAGINATION 
 }	
 
 
