@@ -86,7 +86,8 @@
   <td>{{$user->email}}</td>
   <td>{{$user->role}}</td>
   <td><img src="{{asset('img/users-img/'.$user->image)}}"height=100px;width=100px;/></td>
-  <td>  <a href="#" class="btn btn-primary">Edit</a>
+  <td>  
+  <a href="{{route('EditeUsers' ,$user->id)}}" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-warning">Delete</a></td>
 </tr>
 

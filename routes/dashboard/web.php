@@ -4,6 +4,10 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/widgets' , 'dashboardrouts@widgets')->name('widgits');
     Route::get('/users' , 'Usersctcontroller@index')->name('users');
     Route::post('/users' , 'Usersctcontroller@store')->name('Addusers');
+    Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
+    Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
+    Route::put('/UpdateUsers/{id}' , 'Usersctcontroller@Update')->name('UpdateUsers');
+
 
     Route::get('/Admins' , 'Adminsctcontroller@index')->name('Admins');
     Route::get('/inline' , 'dashboardrouts@Inline')->name('Inline');
