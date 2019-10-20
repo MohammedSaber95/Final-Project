@@ -11,6 +11,9 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
+                        {{-- @foreach ($collection as $item)
+                            
+                        @endforeach --}}
                     <li class="{{Request::is('shop/1') ? 'active' : ''}}"><a href="1">Chairs</a></li>
                         <li class="{{Request::is('shop/2') ? 'active' : ''}}"><a href="2">Beds</a></li>
                         <li class="{{Request::is('shop/3') ? 'active' : ''}}"><a  href="3">Accesories</a></li>
@@ -70,7 +73,7 @@
                         <div class="product-topbar d-xl-flex align-items-end justify-content-between">
                             <!-- Total Products -->
                             <div class="total-products">
-                            <p>Showing 1-{{$value}} 0f {{count($products)}}</p>
+                            <p>Showing 1-{{@$value}} 0f {{count($products)}}</p>
                                 <div class="view d-flex">
                                     <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
                                     <a href="../list"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -78,25 +81,25 @@
                             </div>
                             <!-- Sorting -->
                             <div class="product-sorting d-flex">
-                                <div class="sort-by-date d-flex align-items-center mr-15">
-                                    <p>Sort by</p>
-                                    <form action="#" method="get">
-                                        <select name="select" id="sortBydate">
-                                            <option value="value">Date</option>
-                                            <option value="value">Newest</option>
-                                            <option value="value">Popular</option>
-                                        </select>
-                                    </form>
-                                </div>
+                                    <div class="sort-by-date d-flex align-items-center mr-15">
+                                        <p>Sort by</p>
+                                        <form action="{{route('sortCategory' ,$id)}}" method="get">
+                                            @csrf
+                                            <select name="sortSelect" id="sortBydate" >
+                                                <option value="Date"    @if( $SortedValue == "Date")    selected= "selected" @endif>Date</option>
+                                                <option value="Newest"  @if( $SortedValue == "Newest")  selected= "selected" @endif>Newest</option>
+                                                <option value="Popular" @if( $SortedValue == "Popular") selected= "selected" @endif>Popular</option>
+                                            </select>
+                                       
+                                    </div>
                                 <div class="view-product d-flex align-items-center">
                                     <p>View</p>
-                                    <form action="{{route('showCategory',$id)}}" method="get" >
-                                        @csrf
+                                        
                                         <select name="select" id="viewProduct">
-                                            <option value="12" @if( $value == 12) selected="selected" @endif >12</option>
-                                            <option value="24" @if( $value == 24) selected="selected" @endif>24</option>
-                                            <option value="48" @if( $value == 48) selected="selected" @endif>48</option>
-                                            <option value="96" @if( $value == 96) selected="selected" @endif>96</option>
+                                            <option value="12" @if( @$value == 12) selected="selected" @endif >12</option>
+                                            <option value="24" @if( @$value == 24) selected="selected" @endif>24</option>
+                                            <option value="48" @if( @$value == 48) selected="selected" @endif>48</option>
+                                            <option value="96" @if( @$value == 96) selected="selected" @endif>96</option>
                                         </select>
 
                                     </form>
@@ -176,13 +179,15 @@
 
 <script>
     var select = document.getElementById('viewProduct');
+    var sort = document.getElementById('sortBydate');
     select.onchange = function(){
-    this.form.submit()
-  
+    this.form.submit()  
+        };
         
+    sort.onchange = function(){
+    this.form.submit()  
+        };
 
-    
-};
 </script>    
 
 

@@ -8,19 +8,19 @@
                 <!-- Single Catagory -->
                 @if(count($cats) > 0 )
                 @foreach ($cats as $item)
-                    @if($item -> status === 1 ))
-                <div class="single-products-catagory clearfix">
-                <a href="shop\{{$item -> id}}">
-                    <img src="{{$item ->image}}" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                        <p>From {{App\Product::where('category_id',$item -> id)->min('price')}}</p>
-                            <h4>{{$item -> name}}</h4>
-                        </div>
-                    </a>
-                </div>
-               
+                    @if(App\Product::where('category_id',$item -> id)->min('price') > 0)
+    
+                        <div class="single-products-catagory clearfix">
+                        <a href="shop\{{$item -> id}}">
+                            <img src="{{$item ->image}}" alt="">
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <div class="line"></div>
+                                <p>From {{App\Product::where('category_id',$item -> id)->min('price')}}</p>
+                                    <h4>{{$item -> name}}</h4>
+                                </div>
+                            </a>
+                        </div>               
                 @endif
                 @endforeach
                 @else

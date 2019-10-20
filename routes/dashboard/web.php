@@ -38,6 +38,9 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/language_menu' , 'dashboardrouts@language_menu')->name('langs');
     Route::get('/login' , 'dashboardrouts@login')->name('login');
     Route::get('/register' , 'dashboardrouts@register')->name('register');
+
+    Route::delete('/users/{id}', 'Usersctcontroller@destroy')->name('users.destroy');
+    
 });
     // Route::get('/check' , function(){
     //     return "this dashboard";

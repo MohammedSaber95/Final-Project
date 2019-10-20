@@ -12,10 +12,14 @@
 */
 Auth::routes();
 Route::get('/','pagecontroller@index')->name('home');
-Route::get('/shop/{id}','pagecontroller@show')->name('showCategory');
+
+
 Route::get('/cart','pagecontroller@cart')->name('cart');
 Route::get('/checkout','pagecontroller@checkout')->name('checkout');
 Route::get('/product/{id}','pagecontroller@product')->name('product');
+
+Route::get('/shop/{id}','pagecontroller@sort')->name('sortCategory');
+
 
 
 
