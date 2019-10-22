@@ -1,7 +1,34 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
-    {{-- start modal --}}
+
+    @if (count($errors) > 0)
+
+    <div class="alert alert-danger">
+
+        <strong>Whoops!</strong> There were some problems with your input.
+
+        <ul>
+
+            @foreach ($errors->all() as $error)
+
+                <li>{{ $error }}</li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
+   
+@endif
+@if(Session::get('message'))
+<div class="alert alert-success">
+<strong>
+{{Session::get('message')}}
+</strong>
+</div>
+@endif
+    {{-- start modal to add users --}}
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal" >
     <b> Add anew User</b>
@@ -70,7 +97,7 @@
         </div>
 
 <table class="table table-striped table-class" id= "table-id">
-<tr>
+<tr scope="row">
   <th>Id</th>
   <th>Name</th>
   <th>Email</th>
@@ -78,17 +105,23 @@
   <th>Image</th>
   <th>Control</th>
 </tr>
+
 @foreach($users as $user)
 
-<tr>
+<tr scope="row">
   <td>{{$user->id}}</td>
   <td>{{$user->name}}</td>
   <td>{{$user->email}}</td>
   <td>{{$user->role}}</td>
-  <td><img src="{{asset('img/users-img/'.$user->image)}}"height=100px;width=100px;/></td>
-  <td>  
-  <a href="{{route('EditeUsers' ,$user->id)}}" class="btn btn-primary">Edit</a>
-    <a href="#" class="btn btn-warning">Delete</a></td>
+  <td><img src="{{asset('img/users-img/'.$user->image)}}" height=80px width=100px /></td>
+  <td class="d-flex">  
+  <a style="width:70px;" href="{{route('EditeUsers' ,$user->id)}}" class="btn btn-primary">Edit</a>
+  &nbsp;
+  <form method="POST" action="{{route('users.destroy' ,[$user->id])}}">
+    {{ @csrf_field() }}
+    {{ method_field('DELETE') }}
+      <button style="width:70px;" type="submit" class="btn btn-danger">Delete</button> </form>
+    </td>
 </tr>
 
 @endforeach

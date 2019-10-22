@@ -180,7 +180,7 @@ cursor: pointer;
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
   <a href="{{route('index')}}" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="{{asset('dashboard/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Admin</span>
     </a>
@@ -222,7 +222,7 @@ cursor: pointer;
        --}}
           <li class="nav-item has-treeview {{Request::is('dashboard/users')?'menu-open':''}}{{Request::is('dashboard/Admins')?'menu-open':''}}">
             <a href="#" class="nav-link {{Request::is('dashboard/users')?'active':''}}{{Request::is('dashboard/Admins')?'active':''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Admins & Users
                 <i class="right fas fa-angle-left"></i>
@@ -245,7 +245,7 @@ cursor: pointer;
           </li>
           <li class="nav-item has-treeview {{Request::is('dashboard/Products')?'menu-open':''}}{{Request::is('dashboard/Categories')?'menu-open':''}}">
             <a href="#" class="nav-link {{Request::is('dashboard/Products')?'active':''}}{{Request::is('dashboard/Categories')?'active':''}}">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fa fa-list-alt"></i>
               <p>
                 Products & Categories
                 <i class="fas fa-angle-left right"></i>
@@ -273,8 +273,8 @@ cursor: pointer;
           {{----- Comments Table -----}}
           <li class="nav-item menu-open">
               <a href="{{route('comments.index')}}" class="nav-link {{Request::is('dashboard/comments')?'active':''}}" >
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
+                <i class="fas fa-comment nav-icon"></i>             
+                     <p>
                     Comments
                   </p>
                 </a>
@@ -285,8 +285,8 @@ cursor: pointer;
                {{----- Orders Table -----}}
           <li class="nav-item menu-open">
               <a href="{{route('orders.index')}}" class="nav-link {{Request::is('dashboard/orders')?'active':''}}" >
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
+                <i class="fas fa-shopping-cart nav-icon"></i>
+                 <p>
                     Orders
                   </p>
                 </a>

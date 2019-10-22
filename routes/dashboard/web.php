@@ -1,10 +1,12 @@
 <?php
 Route::prefix('dashboard')->group(function(){
+    
     Route::get('/index' ,'dashboardrouts@index')->name('index');
     Route::get('/widgets' , 'dashboardrouts@widgets')->name('widgits');
+
+
     Route::get('/users' , 'Usersctcontroller@index')->name('users');
     Route::post('/users' , 'Usersctcontroller@store')->name('Addusers');
-    Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
     Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
     Route::put('/UpdateUsers/{id}' , 'Usersctcontroller@Update')->name('UpdateUsers');
 
@@ -38,6 +40,9 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/language_menu' , 'dashboardrouts@language_menu')->name('langs');
     Route::get('/login' , 'dashboardrouts@login')->name('login');
     Route::get('/register' , 'dashboardrouts@register')->name('register');
+
+    Route::delete('/users/{id}', 'Usersctcontroller@destroy')->name('users.destroy');
+    
 });
     // Route::get('/check' , function(){
     //     return "this dashboard";

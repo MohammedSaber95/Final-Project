@@ -37,11 +37,20 @@ class Usersctcontroller extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request -> all();
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'password' => 'required',
+            'role' =>  'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        
+        ]);
         $User=new User();
-        $User->name=$request->input('name');
-        $User->email=$request->input('email');
-        $User->password=$request->input('password');
-        $User->role=$request->input('role');
+        $User['name']=$request->input('name');
+        $User['email']=$request->input('email');
+        $User['password']=$request->input('password');
+        $User['role']=$request->input('role');
         // $users->image=$request->input('image');
         if($request->hasfile('image')){
             $file=$request->file('image');
@@ -56,7 +65,7 @@ class Usersctcontroller extends Controller
         }
         $User->save();
         $users=User::orderby('created_at', 'asc')->get();
-        return view('dash_pages.pages.Admins & Users.users' , compact('users'));
+        return back()->with('message',' Successfully added');
         
     }
 
@@ -92,13 +101,19 @@ class Usersctcontroller extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user ,$id)
+    public function update(Request $request ,$id )
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'password' => 'required',
+            'role' =>  'required',
+       ]);
         $User=User::find($id);
-        $User->name=$request->input('name');
-        $User->email=$request->input('email');
-        $User->password=$request->input('password');
-        $User->role=$request->input('role');
+        $User['name']=request('name');
+        $User['email']=request('email');
+        $User['password']=request('password');
+        $User['role']=request('role');
         // $users->image=$request->input('image');
         if($request->hasfile('image')){
             $file=$request->file('image');
@@ -112,8 +127,7 @@ class Usersctcontroller extends Controller
             $User->image='';
         }
         $User->save();
-        $users=User::orderby('created_at', 'asc')->get();
-        return view('dash_pages.pages.Admins & Users.users' , compact('users'));
+        return redirect('dashboard/users')->with('sucess','data updated');
         
     }
 
@@ -125,7 +139,8 @@ class Usersctcontroller extends Controller
      */
     public function destroy($id)
     {
-        $users=User::find($id);
+       $users = User::findOrFail($id);
+       $users->delete();
         return redirect('dashboard/users');
     }
 }
