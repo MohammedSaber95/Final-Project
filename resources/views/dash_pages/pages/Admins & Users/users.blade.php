@@ -1,7 +1,34 @@
 @extends('layouts.dashboard.master')
  @section('content')
  <div class="content-wrapper">
-    {{-- start modal --}}
+
+    @if (count($errors) > 0)
+
+    <div class="alert alert-danger">
+
+        <strong>Whoops!</strong> There were some problems with your input.
+
+        <ul>
+
+            @foreach ($errors->all() as $error)
+
+                <li>{{ $error }}</li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
+   
+@endif
+@if(Session::get('message'))
+<div class="alert alert-success">
+<strong>
+{{Session::get('message')}}
+</strong>
+</div>
+@endif
+    {{-- start modal to add users --}}
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal" >
     <b> Add anew User</b>

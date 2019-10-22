@@ -22,3 +22,4 @@ Route::get('/product/{id}','pagecontroller@product')->name('product');
 
 
 
+

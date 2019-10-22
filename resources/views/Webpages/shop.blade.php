@@ -11,14 +11,19 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
-                    <li class="{{Request::is('shop/1') ? 'active' : ''}}"><a href="1">Chairs</a></li>
-                        <li class="{{Request::is('shop/2') ? 'active' : ''}}"><a href="2">Beds</a></li>
+                           
+                        @foreach (App\Category::all() as $cats)
+                     
+                    <li class="{{Request::is('shop/$i') ? 'active' : ''}}"><a href={{$i++}}>{{$cats->name}}</a></li>
+                    @endforeach
+                   
+                        {{-- <li class="{{Request::is('shop/2') ? 'active' : ''}}"><a href="2">Beds</a></li>
                         <li class="{{Request::is('shop/3') ? 'active' : ''}}"><a  href="3">Accesories</a></li>
                         <li class="{{Request::is('shop/4') ? 'active' : ''}}"><a  href="4">Furniture</a></li>
                         <li class="{{Request::is('shop/5') ? 'active' : ''}}"><a  href="5">Home Deco</a></li>
                         <li class="{{Request::is('shop/6') ? 'active' : ''}}"><a  href="6">Dressings</a></li>
-                        <li class="{{Request::is('shop/7') ? 'active' : ''}}"><a  href="7">Tables</a></li>
-                        <li class="{{Request::is('shop/8') ? 'active' : ''}}"><a  href="8">Night Stands</a></li>
+                        <li class="{{Request::is('shop/7') ? 'act ive' : ''}}"><a  href="7">Tables</a></li>
+                        <li class="{{Request::is('shop/8') ? 'active' : ''}}"><a  href="8">Night Stands</a></li> --}}
                     </ul>
                 </div>
             </div>
@@ -117,9 +122,9 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                            <img src="{{$product -> image1}}" alt="">
+                            <img src="{{asset('img/product-img/'.$product ->image1)}}" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img zoom" src="{{$product -> image1}}" alt="">
+                                <img class="hover-img zoom" src="{{asset('img/product-img/'.$product -> image2)}}" alt="">
                             </div>
 
                             <!-- Product Description -->

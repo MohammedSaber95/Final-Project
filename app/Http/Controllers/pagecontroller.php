@@ -17,11 +17,13 @@ class pagecontroller extends Controller
 //     }
 // }
     public function index(){
+        $i=0;
         $cats = DB::table('categories') ->get();
-        return view('Webpages.index',compact('cats'));
+        return view('Webpages.index',compact('cats' , 'i'));
     }
 
     public function show(Request $request,$id){
+        $i=1;
         $input = $request -> all();
         if(@$input['select']){
         
@@ -43,7 +45,7 @@ class pagecontroller extends Controller
         }}
       
         $product = Product::where('category_id',$id)->paginate(@$value);
-        return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>$product,'value'=>@$value]);
+        return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>$product,'value'=>@$value , 'i'=>$i]);
     
 }
 
@@ -56,10 +58,13 @@ class pagecontroller extends Controller
     }
 
     public function product($id){
-        $product = Product::find($id)->get();
-        return view('Webpages.product-details',compact('id'));
+        $product = Product::where('id',$id)->get();
+        return view('Webpages.product-details',compact('id' ,'product'));
     }
 
-
+    // public function productdata($id){
+    //     $products = Product::where('id',$id);
+    //     return view('Webpages.product-details',compact('products'));
+    // }
    
 }

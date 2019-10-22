@@ -5,7 +5,6 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/users' , 'Usersctcontroller@index')->name('users');
     Route::post('/users' , 'Usersctcontroller@store')->name('Addusers');
     Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
-    Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
     Route::put('/UpdateUsers/{id}' , 'Usersctcontroller@Update')->name('UpdateUsers');
 
 
