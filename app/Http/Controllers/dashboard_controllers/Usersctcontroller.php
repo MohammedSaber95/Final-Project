@@ -103,19 +103,17 @@ class Usersctcontroller extends Controller
      */
     public function update(Request $request ,$id )
     {
-        $input = $request -> all();
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
             'password' => 'required',
             'role' =>  'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
        ]);
         $User=User::find($id);
-        $User['name']=$request->input('name');
-        $User['email']=$request->input('email');
-        $User['password']=$request->input('password');
-        $User['role']=$request->input('role');
+        $User['name']=request('name');
+        $User['email']=request('email');
+        $User['password']=request('password');
+        $User['role']=request('role');
         // $users->image=$request->input('image');
         if($request->hasfile('image')){
             $file=$request->file('image');
@@ -129,9 +127,7 @@ class Usersctcontroller extends Controller
             $User->image='';
         }
         $User->save();
-        $users=User::orderby('created_at', 'asc')->get();
-
-        return back()->with('User');
+        return redirect('dashboard/users')->with('sucess','data updated');
         
     }
 
@@ -143,7 +139,8 @@ class Usersctcontroller extends Controller
      */
     public function destroy($id)
     {
-        $users=User::find($id);
+       $users = User::findOrFail($id);
+       $users->delete();
         return redirect('dashboard/users');
     }
 }

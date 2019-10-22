@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard_controllers;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -40,5 +41,7 @@ class Addproductscontroller extends Controller
        $products['category_id'] = $input['category']; 
        $products -> save();
        return back()
-       ->with('message',' Successfully added');}
+       ->with('message',' Successfully added');
+    
+    }
 }

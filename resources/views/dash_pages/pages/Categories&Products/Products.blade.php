@@ -75,13 +75,14 @@
                     <input type="color"  name="color" >
                 </div>
                 <div class="form-group">
-                    <label for="category">Example select</label>
+                    <label for="category">select Category</label>
                     <select class="form-control" id="category" name="category">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                      @foreach (App\Category::get() as $cat)
+                        @if($cat -> status == 1){
+                         <option>{{$cat -> name}}</option>
+                        }
+                        @endif
+                      @endforeach
                     </select>
                 </div>               
                 <input type="submit" class="btn btn-primary">
@@ -133,12 +134,12 @@
   <td>{{$prods->id}}</td>
   <td>{{$prods->name}}</td>
   <td style="width:300px;">{{$prods->description}}</td>
-  <td><img src="{{asset('img/product-img/'.$prods->image1)}}"height=100px;width=100px;/></td>
-  <td><img src="{{asset('img/product-img/'.$prods->image2)}}"height=100px;width=100px;/></td>
-  <td><img src="{{asset('img/product-img/'.$prods->image3)}}"height=100px;width=100px;/></td>
+  <td><img src="{{asset('img/product-img/'.$prods->image1)}}" height=80px width=100px/></td>
+  <td><img src="{{asset('img/product-img/'.$prods->image2)}}" height=80px width=100px/></td>
+  <td><img src="{{asset('img/product-img/'.$prods->image3)}}" height=80px width=100px/></td>
   <td>$ {{ceil($prods->price)}}</td>
   <td><div style="background:{{$prods->color}};width:50px;height:50px;"></div></td>
-  <td>  <a href="#" class="btn btn-primary">Edit</a>
+  <td style="width:200px;height:100px">  <a href="#" class="btn btn-primary">Edit</a>
     <a href="#" class="btn btn-danger">Delete</a></td>
 </tr>
 @endforeach

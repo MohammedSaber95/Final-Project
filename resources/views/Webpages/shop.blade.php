@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-        
+
 
             <!-- ##### Single Widget ##### -->
             <div class="widget color mb-50">
@@ -75,33 +75,33 @@
                         <div class="product-topbar d-xl-flex align-items-end justify-content-between">
                             <!-- Total Products -->
                             <div class="total-products">
-                            <p>Showing 1-{{$value}} 0f {{count($products)}}</p>
+                            <p>Showing 1-{{@$value}} 0f {{count($products)}}</p>
                                 <div class="view d-flex">
-                                    <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                                    <a href="../list"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                    <a href="#" class="active" id="gridBtn"><i class="fa fa-th-large " aria-hidden="true"></i></a>
+                                    <a href="#" id="listBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <!-- Sorting -->
                             <div class="product-sorting d-flex">
-                                <div class="sort-by-date d-flex align-items-center mr-15">
-                                    <p>Sort by</p>
-                                    <form action="#" method="get">
-                                        <select name="select" id="sortBydate">
-                                            <option value="value">Date</option>
-                                            <option value="value">Newest</option>
-                                            <option value="value">Popular</option>
-                                        </select>
-                                    </form>
-                                </div>
+                                    <div class="sort-by-date d-flex align-items-center mr-15">
+                                        <p>Sort by</p>
+                                        <form action="{{route('sortCategory' ,$id)}}" method="get">
+                                            @csrf
+                                            <select name="sortSelect" id="sortBydate" >
+                                                <option value="Date"    @if( $SortedValue == "Date")    selected= "selected" @endif>Date</option>
+                                                <option value="Newest"  @if( $SortedValue == "Newest")  selected= "selected" @endif>Newest</option>
+                                                <option value="Popular" @if( $SortedValue == "Popular") selected= "selected" @endif>Popular</option>
+                                            </select>
+
+                                    </div>
                                 <div class="view-product d-flex align-items-center">
                                     <p>View</p>
-                                    <form action="{{route('showCategory',$id)}}" method="get" >
-                                        @csrf
+
                                         <select name="select" id="viewProduct">
-                                            <option value="12" @if( $value == 12) selected="selected" @endif >12</option>
-                                            <option value="24" @if( $value == 24) selected="selected" @endif>24</option>
-                                            <option value="48" @if( $value == 48) selected="selected" @endif>48</option>
-                                            <option value="96" @if( $value == 96) selected="selected" @endif>96</option>
+                                            <option value="12" @if( @$value == 12) selected="selected" @endif >12</option>
+                                            <option value="24" @if( @$value == 24) selected="selected" @endif>24</option>
+                                            <option value="48" @if( @$value == 48) selected="selected" @endif>48</option>
+                                            <option value="96" @if( @$value == 96) selected="selected" @endif>96</option>
                                         </select>
 
                                     </form>
@@ -118,8 +118,8 @@
                     <!-- Single Product Area -->
                 @if(count($products) > 0)
                     @foreach($products as $product)
-                    <div class="col-12 col-sm-6 col-md-12 col-xl-6" >
-                        <div class="single-product-wrapper">
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6 full" >
+                        <div class="single-product-wrapper list" >
                             <!-- Product Image -->
                             <div class="product-img">
                             <img src="{{asset('img/product-img/'.$product ->image1)}}" alt="">
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     @endif
-            
+
 
 
                     <div class="col-12">
@@ -181,14 +181,34 @@
 
 <script>
     var select = document.getElementById('viewProduct');
+    var sort = document.getElementById('sortBydate');
     select.onchange = function(){
     this.form.submit()
-  
-        
+        };
 
-    
-};
-</script>    
+    sort.onchange = function(){
+    this.form.submit()
+        };
+
+
+    $(function() {
+        $('#gridBtn').click(function() {
+            $('.list').removeClass('list-view').addClass('single-product-wrapper');
+            $('.full').removeClass('full-view');
+            $('#listBtn').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('#listBtn').click(function() {
+            $('.list').removeClass('single-product-wrapper').addClass('list-view');
+            $('.full').addClass('full-view');
+            $('#gridBtn').removeClass('active');
+            $(this).addClass('active');
+        });
+
+    })
+
+</script>
 
 
 

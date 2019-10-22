@@ -97,7 +97,7 @@
         </div>
 
 <table class="table table-striped table-class" id= "table-id">
-<tr>
+<tr scope="row">
   <th>Id</th>
   <th>Name</th>
   <th>Email</th>
@@ -105,17 +105,23 @@
   <th>Image</th>
   <th>Control</th>
 </tr>
+
 @foreach($users as $user)
 
-<tr>
+<tr scope="row">
   <td>{{$user->id}}</td>
   <td>{{$user->name}}</td>
   <td>{{$user->email}}</td>
   <td>{{$user->role}}</td>
-  <td><img src="{{asset('img/users-img/'.$user->image)}}"height=100px;width=100px;/></td>
-  <td>  
-  <a href="{{route('EditeUsers' ,$user->id)}}" class="btn btn-primary">Edit</a>
-    <a href="#" class="btn btn-warning">Delete</a></td>
+  <td><img src="{{asset('img/users-img/'.$user->image)}}" height=80px width=100px /></td>
+  <td class="d-flex">  
+  <a style="width:70px;" href="{{route('EditeUsers' ,$user->id)}}" class="btn btn-primary">Edit</a>
+  &nbsp;
+  <form method="POST" action="{{route('users.destroy' ,[$user->id])}}">
+    {{ @csrf_field() }}
+    {{ method_field('DELETE') }}
+      <button style="width:70px;" type="submit" class="btn btn-danger">Delete</button> </form>
+    </td>
 </tr>
 
 @endforeach
