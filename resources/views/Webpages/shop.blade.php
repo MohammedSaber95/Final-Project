@@ -11,12 +11,13 @@
                 <!--  Catagories  -->
                 <div class="catagories-menu">
                     <ul>
-                           
-                        @foreach (App\Category::all() as $cats)
-                     
-                    <li class="{{Request::is('shop/$i') ? 'active' : ''}}"><a href={{$i++}}>{{$cats->name}}</a></li>
-                    @endforeach
-                   
+                    <!-- App\Category::where('status',1)->get() -->
+                        @foreach(App\Category::all() as $cats)
+                       @if(count(App\Product::where('category_id',$cats->id)->get())>0) 
+                    <li class="{{Request::is('shop/'.$cats->id) ? 'active' : ''}}"><a href={{$cats->id}}>{{$cats->name}}</a></li>
+                        @endif
+                       @endforeach
+                      
                         {{-- <li class="{{Request::is('shop/2') ? 'active' : ''}}"><a href="2">Beds</a></li>
                         <li class="{{Request::is('shop/3') ? 'active' : ''}}"><a  href="3">Accesories</a></li>
                         <li class="{{Request::is('shop/4') ? 'active' : ''}}"><a  href="4">Furniture</a></li>
@@ -122,9 +123,9 @@
                         <div class="single-product-wrapper list" >
                             <!-- Product Image -->
                             <div class="product-img">
-                            <img src="{{asset('img/product-img/'.$product ->image1)}}" alt="">
+                            <img src="{{$product ->image1}}" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img zoom" src="{{asset('img/product-img/'.$product -> image2)}}" alt="">
+                                <img class="hover-img zoom" src="{{$product -> image2}}" alt="">
                             </div>
 
                             <!-- Product Description -->
@@ -140,11 +141,8 @@
                                 <!-- Ratings & Cart -->
                                 <div class="ratings-cart text-right">
                                     <div class="ratings">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $product->averageRating }}" data-size="xs" disabled="">
+
                                     </div>
                                     <div class="cart">
                                         <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="/img/core-img/cart.png" alt=""></a>

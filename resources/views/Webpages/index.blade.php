@@ -11,7 +11,7 @@
                     @if(App\Product::where('category_id',$item -> id)->min('price') > 0)
                         <div class="single-products-catagory clearfix">
                         <a href="shop\{{$item -> id}}">
-                    <img src="{{asset('img/product-img/'.$item ->image)}}" alt="">
+                    <img src="{{$item ->image}}" alt="">
                                 <!-- Hover Content -->
                                 <div class="hover-content">
                                     <div class="line"></div>

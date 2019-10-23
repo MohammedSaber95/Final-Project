@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('image2');
             $table->string('image3');
             $table->decimal('price');
+            $table->decimal('rating');
             $table->string('color');
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('category_id')->index(); 

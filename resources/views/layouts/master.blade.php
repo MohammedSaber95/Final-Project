@@ -13,10 +13,16 @@
 
     <!-- Favicon  -->
     <link rel="icon" href="{{asset('/img/core-img/favicon.ico')}}">
-
+  
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{asset('/css/core-style.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+@yield('style')
+<link rel="stylesheet" href="{{asset('/css/star-rating.min.css')}}" />
+<link rel="stylesheet" href="{{asset('/css/style.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
 
 </head>
 
@@ -225,11 +231,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Popper js -->
     <script src="{{asset('/js/popper.min.js')}}"></script>
     <!-- Bootstrap js -->
-    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+ 
+    <script src="{{asset('/js/bootstrap4.min.js')}}"></script>
     <!-- Plugins js -->
     <script src="{{asset('/js/plugins.js')}}"></script>
+    <script src="{{asset('/js/star-rating.min.js')}}"></script>
+
     <!-- Active js -->
     <script src="{{asset('/js/active.js')}}"></script>
+
     @yield('script')
 </body>
 

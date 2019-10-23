@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class pagecontroller extends Controller
 {
+
+
     //
 //     public  function store(Request $request){
         
@@ -52,7 +58,6 @@ class pagecontroller extends Controller
 
 
 public function sort( Request $request,$id){
-    $i=1;
     $input = $request -> all();
 
         /*Display products by view  */
@@ -89,12 +94,12 @@ public function sort( Request $request,$id){
                     break;
                 case 'Popular' :
                     $SortedValue = 'Popular';
-                    $product = Product::where('category_id',$id)->orderBy('id','asc')->paginate(@$value);
+                    $product = Product::where('category_id',$id)->orderBy('rating','desc')->paginate(@$value);
                     return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>@$product , 'SortedValue'=>@$SortedValue,'value'=>@$value]);
                     break; 
                 default:
                     $product = Product::where('category_id',$id)->orderBy('id','asc')->paginate(12);
-                    return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>@$product , 'SortedValue'=>'Date','value'=>12 , 'i'=>$i]);
+                    return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>@$product , 'SortedValue'=>'Date','value'=>12 ]);
                
         }
     
@@ -115,7 +120,7 @@ public function sort( Request $request,$id){
     }
 
     public function product($id){
-        $product = Product::where('id',$id)->get();
+        $product = Product::find($id);
         return view('Webpages.product-details',compact('id' ,'product'));
     }
 
@@ -123,5 +128,25 @@ public function sort( Request $request,$id){
     //     $products = Product::where('id',$id);
     //     return view('Webpages.product-details',compact('products'));
     // }
+
+    public function RateFun(Request $request){
+        if(\Auth::check()){
+        $product = Product::find($request->id);
+        $product -> rating = $request ->rate;
+        $product -> save();
+        $rating = new \willvincent\Rateable\Rating;
+
+        $rating->rating = $request->rate;
+
+        $rating->user_id = auth()->user()->id;
+
+        $product->ratings()->save($rating);
+        
+        return redirect()->route("product",$request->id);
+        }else{
+            return redirect("login");
+
+        }
+    }
    
 }
