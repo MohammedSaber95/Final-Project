@@ -80,7 +80,7 @@
                                     {{ csrf_field() }}
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                                     <div class="ratings">
-                                    <input id="input-1" name="rate"  class=" rating rating-loading w-100" data-min="0" data-max="5" data-step="1" value="{{ $product->userAverageRating }}" data-size="xs">
+                                    <input id="input-1" name="rate"  class=" rating rating-loading w-100" data-min="0" data-max="5" data-step="1" value="{{ $product->averageRating }}" data-size="xs">
                                     <input type="hidden" name="id" required="" value="{{ $id }}">
                                     <button class="btn btn-success w-100 ">Submit Review</button>
 

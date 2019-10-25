@@ -129,6 +129,26 @@ public function sort( Request $request,$id){
     //     return view('Webpages.product-details',compact('products'));
     // }
 
+    //Fuinction For Search Button 
+
+    
+    public function mysearch(Request $request){
+            $q=$request->get('q');
+            $productName = DB::table('products')->where('name','LIKE','%'.$q.'%')->orWhere('description','LIKE','%'.$q.'%')->get();
+        if(count($productName) > 0)
+            {
+                return view('Webpages.search')->with('productName',$productName)->withQuery($q);
+             }
+        else 
+             {
+                return view ('Webpages.search')->withMessage('No Details found. Try to search again !');
+            
+            }
+        
+        }
+
+
+        //Function for Rating Start System
     public function RateFun(Request $request){
         if(\Auth::check()){
         $product = Product::find($request->id);

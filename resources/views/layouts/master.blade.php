@@ -36,8 +36,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                    <form action="{{route('searchproduct')}}" method="post" role="search"  >
+                                 {{csrf_field()}}
+                            <input type="search" name="q"  id="search" placeholder="Type your keyword..." value="{{ old('search') }}" >
                             <button type="submit"><img src="/img/core-img/search.png" alt=""></button>
                         </form>
                     </div>

@@ -20,6 +20,7 @@ Route::get('/product/{id}','pagecontroller@product')->name('product');
 Route::post('/product','pagecontroller@RateFun')->name('ratingproduct');
 
 Route::get('/shop/{id}','pagecontroller@sort')->name('sortCategory');
+Route::any('/search','pagecontroller@mysearch')->name('searchproduct');
 
 
 
