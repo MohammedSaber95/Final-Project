@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 
 
 class pagecontroller extends Controller
@@ -167,6 +167,13 @@ public function sort( Request $request,$id){
             return redirect("login");
 
         }
+    }
+
+    public function thisweek(){
+        Carbon::setWeekStartsAt(Carbon::SUNDAY);
+        Carbon::setWeekEndsAt(Carbon::SATURDAY);
+        $pro=Product::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+         return view('Webpages.thisweek' , compact('pro'));
     }
    
 }

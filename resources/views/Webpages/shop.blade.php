@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="row">
-
+                    
     {{-- this the beginnig of the products which display with ajax  --}}
 
                     <!-- Single Product Area -->
