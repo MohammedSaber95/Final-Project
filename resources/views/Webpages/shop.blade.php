@@ -38,7 +38,7 @@
 
                 <div class="widget-desc">
                     <ul class="d-flex">
-                        <li><a href="#" class="color1"></a></li>
+                        <li><a href="#" id="white" class="color1"></a></li>
                         <li><a href="#" class="color2"></a></li>
                         <li><a href="#" class="color3"></a></li>
                         <li><a href="#" class="color4"></a></li>
@@ -57,6 +57,8 @@
 
                 <div class="widget-desc">
                     <div class="slider-range">
+                        <input type="hidden" id="hidden_minimum_price" value="10">
+                        <input type="hidden" id="hidden_maximum_price" value="1000">
                         <div data-min="10" data-max="1000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1000" data-label-result="">
                             <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                             <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
@@ -203,6 +205,8 @@
             $('#gridBtn').removeClass('active');
             $(this).addClass('active');
         });
+
+        
 
     })
 

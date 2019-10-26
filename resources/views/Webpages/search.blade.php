@@ -33,9 +33,10 @@
                             <tr>
                             <!-----------------------To highlight the search results --------------------------->
                             <?php
-                                   $replace = '<span style="background-color:yellow;">' . $query . '</span>';
+                                   $replace = '<span style="background-color:yellow;">' . $query. '</span>';
                                     $product ->name = str_replace( $query, $replace, $product ->name );
                                     $product ->description = str_replace( $query, $replace, $product ->description );
+                                    
                             ?>
                             <!-----------------------To highlight the search results --------------------------->
 
