@@ -23,6 +23,9 @@ Route::get('/shop/{id}','pagecontroller@sort')->name('sortCategory');
 Route::any('/search','pagecontroller@mysearch')->name('searchproduct');
 Route::any('/prodsthisweek','pagecontroller@thisweek')->name('thisweek');
 
+Route::get('/favourite','favouriteController@index')->name('favourite');
+
+
 
 
 
