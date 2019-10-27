@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Category;
 use App\Product;
+use App\Comment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,8 +135,9 @@ public function sort( Request $request,$id){
     }
 
     public function product($id){
+        $comments = Comment::where( 'product_id',$id )->paginate(3);
         $product = Product::find($id);
-        return view('Webpages.product-details',compact('id' ,'product'));
+        return view('Webpages.product-details',compact('id' ,'product' , 'comments'));
     }
 
     // public function productdata($id){
@@ -166,7 +168,7 @@ public function sort( Request $request,$id){
     public function RateFun(Request $request){
         if(\Auth::check()){
         $product = Product::find($request->id);
-        $product -> rating = $request ->rate;
+        $product ->rating = $request ->rate;
         $product -> save();
         $rating = new \willvincent\Rateable\Rating;
 
@@ -189,5 +191,6 @@ public function sort( Request $request,$id){
         $pro=Product::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
          return view('Webpages.thisweek' , compact('pro'));
     }
-   
+
+ 
 }

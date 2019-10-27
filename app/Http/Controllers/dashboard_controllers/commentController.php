@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\dashboard_controllers;
 use App\Comment;
 use App\Http\Controllers\Controller;
-
+use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 class commentController extends Controller
@@ -37,8 +38,23 @@ class commentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+     
+        if(\Auth::check()){
+            $product = Product::find($request->id);
+            $comments=new Comment();
+            $comments['title']=$request->input('title');
+            $comments['description']=$request->input('description');
+            $comments['status']=$request->input('status');
+            $comments['product_id']=$request->input('product_id');
+            $comments['user_id']=auth()->user()->id;
+            $comments->save();
+            return back();
+        }else{
+            return redirect("login");
+
+        }
+
+       }
 
     /**
      * Display the specified resource.
@@ -48,7 +64,8 @@ class commentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Comment::find($id);
+        return view('dash_pages.pages.Comments&Orders.commentData' , compact('comments' ,'id' ));
     }
 
     /**
@@ -82,6 +99,8 @@ class commentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comments=Comment::find($id);
+        $comments->delete();
+        return back();
     }
 }
