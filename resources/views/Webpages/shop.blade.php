@@ -1,5 +1,10 @@
 
        @extends('layouts.master')
+       @section('style')
+       <style>
+       .custom-control-label{width:100px;height:23px;border:1px solid black;}
+       </style>
+       @endsection
        @section('content')
         <div class="shop_sidebar_area">
 
@@ -37,16 +42,46 @@
                 <h6 class="widget-title mb-30">Color</h6>
 
                 <div class="widget-desc">
-                    <ul class="d-flex">
-                        <li><a href="#" id="white" class="color1"></a></li>
-                        <li><a href="#" class="color2"></a></li>
-                        <li><a href="#" class="color3"></a></li>
-                        <li><a href="#" class="color4"></a></li>
-                        <li><a href="#" class="color5"></a></li>
-                        <li><a href="#" class="color6"></a></li>
-                        <li><a href="#" class="color7"></a></li>
-                        <li><a href="#" class="color8"></a></li>
-                    </ul>
+                <form action="{{route('sortCategory' ,$id)}}" method="get" id="filterForm">
+                                            @csrf
+                    <div class="custom-control custom-radio">
+                        <a href="{{route('sortCategory' ,$id)}}" class="color1">Select All </a>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="silver" @if( @$color == 'silver') checked="true" @endif type="radio" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label color2" for="customCheck2" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="white" type="radio" @if( @$color == 'white') checked="true" @endif class="custom-control-input" id="customCheck3">
+                        <label class="custom-control-label color3" for="customCheck3" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="fuchsia" type="radio"  @if( @$color == 'fuchsia') checked="true" @endif class="custom-control-input" id="customCheck4">
+                        <label class="custom-control-label color4" for="customCheck4" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="aqua" type="radio" @if( @$color == 'aqua') checked="true" @endif class="custom-control-input" id="customCheck5">
+                        <label class="custom-control-label color5" for="customCheck5" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="black" type="radio" @if( @$color == 'black') checked="true" @endif class="custom-control-input" id="customCheck6">
+                        <label class="custom-control-label color6" for="customCheck6" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="blue" type="radio" @if( @$color == 'blue') checked="true" @endif class="custom-control-input" id="customCheck7">
+                        <label class="custom-control-label color7" for="customCheck7" ></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input name="color" value="purple" type="radio" @if( @$color == 'olive') checked="true" @endif class="custom-control-input" id="customCheck8">
+                        <label class="custom-control-label color8" for="customCheck8" ></label>
+                    </div>
                 </div>
             </div>
 
@@ -57,14 +92,15 @@
 
                 <div class="widget-desc">
                     <div class="slider-range">
-                        <input type="hidden" id="hidden_minimum_price" value="10">
-                        <input type="hidden" id="hidden_maximum_price" value="1000">
-                        <div data-min="10" data-max="1000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1000" data-label-result="">
+                        <input type="hidden"  name="min" id="hidden_minimum_price" >
+                        <input type="hidden" name="max" id="hidden_maximum_price" >
+                        <div data-min="1" data-max="100" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="1" data-value-max="100" data-label-result="">
                             <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                             <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                             <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                         </div>
-                        <div class="range-price">$10 - $1000</div>
+                        <div class="range-price">$1 - $100</div>
+                        <button type="submit" class="btn btn-success" style="font-size:15px;">Click To Filterate</button>
                     </div>
                 </div>
             </div>
@@ -75,21 +111,28 @@
 
                 <div class="row">
                     <div class="col-12">
+                    
                         <div class="product-topbar d-xl-flex align-items-end justify-content-between">
                             <!-- Total Products -->
                             <div class="total-products">
-                            <p>Showing 1-{{@$value}} 0f {{count($products)}}</p>
+                            <p><span style="margin-right:80px;">Showing 1-{{@$value}} 0f {{count($products)}}</span>
+                                <span style="fontsize:15px;"> Price <mark>{{$minPrice}}</mark> to <mark>{{$maxPrice}} <mark> </span>
+
+
+                            </p>
+
                                 <div class="view d-flex">
                                     <a href="#" class="active" id="gridBtn"><i class="fa fa-th-large " aria-hidden="true"></i></a>
                                     <a href="#" id="listBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
                                 </div>
-                            </div>
+                                
+                             </div>
+                           
                             <!-- Sorting -->
                             <div class="product-sorting d-flex">
                                     <div class="sort-by-date d-flex align-items-center mr-15">
                                         <p>Sort by</p>
-                                        <form action="{{route('sortCategory' ,$id)}}" method="get">
-                                            @csrf
+                                       
                                             <select name="sortSelect" id="sortBydate" >
                                                 <option value="Date"    @if( $SortedValue == "Date")    selected= "selected" @endif>Date</option>
                                                 <option value="Newest"  @if( $SortedValue == "Newest")  selected= "selected" @endif>Newest</option>
@@ -97,6 +140,7 @@
                                             </select>
 
                                     </div>
+                                    
                                 <div class="view-product d-flex align-items-center">
                                     <p>View</p>
 
@@ -113,9 +157,17 @@
                         </div>
                     </div>
                 </div>
-
+                <?php
+                       
+                        $divStyle='style="display:none;"'; //hide div
+                        // add condition
+                        if(@$color){
+                            $divStyle=''; // show div
+                        }
+                    ?>
+                <p <?php echo $divStyle ?> > Filter with color <span  style="background-color:grey;padding:10px;color:{{@$color}}">{{@$color}}</span> </p>
+               
                 <div class="row">
-                    
     {{-- this the beginnig of the products which display with ajax  --}}
 
                     <!-- Single Product Area -->
@@ -190,6 +242,9 @@
     this.form.submit()
         };
 
+        $('input[type=radio]').click(function(){
+            this.form.submit();
+        })
 
     $(function() {
         $('#gridBtn').click(function() {
@@ -205,10 +260,11 @@
             $('#gridBtn').removeClass('active');
             $(this).addClass('active');
         });
-
-        
+       var min =  $('.slider-range-price').slider('values',0)
+       var max =  $('.slider-range-price').slider('values',1)
 
     })
+    
 
 </script>
 

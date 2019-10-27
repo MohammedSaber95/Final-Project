@@ -95,6 +95,7 @@
     });
 
     // :: 11.0 Slider Range Price Active Code
+    
     $('.slider-range-price').each(function () {
         var min = jQuery(this).data('min');
         var max = jQuery(this).data('max');
@@ -107,13 +108,17 @@
             range: true,
             min: min,
             max: max,
+            step:1,
             values: [value_min, value_max],
             slide: function (event, ui) {
                 var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
                 console.log(t);
                 t.closest('.slider-range').find('.range-price').html(result);
+                $('#hidden_minimum_price').val(ui.values[0]);
+                $('#hidden_maximum_price').val(ui.values[1]);
             }
         });
     });
+
 
 })(jQuery);

@@ -1256,22 +1256,28 @@ img {
           border:none;
           
         }
-        .widget.color .widget-desc ul li a.color1 {
-          background-color: #ffffff; }
-        .widget.color .widget-desc ul li a.color2 {
-          background-color: #969696; }
-        .widget.color .widget-desc ul li a.color3 {
-          background-color: #030303; }
-        .widget.color .widget-desc ul li a.color4 {
-          background-color: #0315ff; }
-        .widget.color .widget-desc ul li a.color5 {
-          background-color: #dc0647; }
-        .widget.color .widget-desc ul li a.color6 {
-          background-color: #fff56a; }
-        .widget.color .widget-desc ul li a.color7 {
-          background-color: #f26e51; }
-        .widget.color .widget-desc ul li a.color8 {
-          background-color: #9a8777; }
+        .widget.color .widget-desc .color1 {
+          background-color: white;
+          color :black ; 
+          font-size: 20px;  
+        }
+        .widget.color .widget-desc .color1:hover{
+          color:blue;
+        }
+        .widget.color .widget-desc .color2 {
+          background-color: silver; }
+        .widget.color .widget-desc .color3 {
+          background-color: white; }
+        .widget.color .widget-desc .color4 {
+          background-color: fuchsia; }
+        .widget.color .widget-desc .color5 {
+          background-color: aqua; }
+        .widget.color .widget-desc .color6 {
+          background-color: black; }
+        .widget.color .widget-desc .color7 {
+          background-color: blue; }
+        .widget.color .widget-desc .color8 {
+          background-color: purple; }
   .widget.brands .form-check {
     margin-bottom: 25px; }
     .widget.brands .form-check label {
