@@ -134,3 +134,28 @@ width: 0;
     .product-topbar .total-products .view a.active {
         background-color: #fbb710;
     }
+
+    .orange {
+  
+        background: #ff9f1a; }
+      
+      .green {
+      
+        background: #85ad00; }
+      
+      .blue {
+      
+        background: #0076ad; }
+      
+
+        .carousel-indicators{
+            width:97%;
+            left:0;
+        }
+        .main-content-wrapper .single-product-area .single_product_desc .cart .amado-btn{
+            line-height:68px;
+        }
+
+        .btn{
+            font-size:20px;
+        }

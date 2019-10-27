@@ -17,8 +17,14 @@ Route::get('/','pagecontroller@index')->name('home');
 Route::get('/cart','pagecontroller@cart')->name('cart');
 Route::get('/checkout','pagecontroller@checkout')->name('checkout');
 Route::get('/product/{id}','pagecontroller@product')->name('product');
+Route::post('/product','pagecontroller@RateFun')->name('ratingproduct');
 
 Route::get('/shop/{id}','pagecontroller@sort')->name('sortCategory');
+Route::any('/search','pagecontroller@mysearch')->name('searchproduct');
+Route::any('/prodsthisweek','pagecontroller@thisweek')->name('thisweek');
+
+Route::get('/favourite','favouriteController@index')->name('favourite');
+
 
 
 

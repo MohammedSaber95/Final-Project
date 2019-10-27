@@ -13,10 +13,16 @@
 
     <!-- Favicon  -->
     <link rel="icon" href="{{asset('/img/core-img/favicon.ico')}}">
-
+  
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{asset('/css/core-style.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+@yield('style')
+<link rel="stylesheet" href="{{asset('/css/star-rating.min.css')}}" />
+<link rel="stylesheet" href="{{asset('/css/style.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
 
 </head>
 
@@ -30,8 +36,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                    <form action="{{route('searchproduct')}}" method="post" role="search"  >
+                                 {{csrf_field()}}
+                            <input type="search" name="q"  id="search" placeholder="Type your keyword..." value="{{ old('search') }}" >
                             <button type="submit"><img src="/img/core-img/search.png" alt=""></button>
                         </form>
                     </div>
@@ -122,12 +129,12 @@
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
                 <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
+                <a href="{{route('thisweek')}}" class="btn amado-btn active">New this week</a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
                 <a href="{{route('cart')}}" class="cart-nav"><img src="/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="/img/core-img/favorites.png" alt=""> Favourite</a>
+                <a href="{{url('favourite')}}" class="fav-nav"><img src="/img/core-img/favorites.png" alt=""> Favourite</a>
                 <a href="#" class="search-nav"><img src="/img/core-img/search.png" alt=""> Search</a>
             </div>
             <!-- Social Button -->
@@ -225,11 +232,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Popper js -->
     <script src="{{asset('/js/popper.min.js')}}"></script>
     <!-- Bootstrap js -->
-    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+ 
+    <script src="{{asset('/js/bootstrap4.min.js')}}"></script>
     <!-- Plugins js -->
     <script src="{{asset('/js/plugins.js')}}"></script>
+    <script src="{{asset('/js/star-rating.min.js')}}"></script>
+
     <!-- Active js -->
     <script src="{{asset('/js/active.js')}}"></script>
+
     @yield('script')
 </body>
 
