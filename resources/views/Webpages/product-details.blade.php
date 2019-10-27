@@ -73,7 +73,7 @@
                         <div class="card">
                             <div class="card-body">
                               <h5 class="card-title"></h5>
-                              <h6 class="card-subtitle mb-2 text-muted"><a href="{{route('users')}}" ><p class="h3">{{$comment->User->name}}</p></a></h6>
+                              <h6 class="card-subtitle mb-2 text-muted"><a href="#" ><p class="h3">{{$comment->User->name}}</p></a></h6>
                               <p class="card-text h3">{{$comment->description}}. &nbsp;&nbsp;&nbsp;&nbsp; <small>ago &nbsp;{{ $comment->created_at->diffForHumans() }}</small></p>
 
                             </div>
