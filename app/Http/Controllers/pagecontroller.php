@@ -29,32 +29,7 @@ class pagecontroller extends Controller
         return view('Webpages.index',compact('cats' , 'i'));
     }
 
-//     public function show(Request $request,$id){
-//         $input = $request -> all();
-//         $input['select'] = 12;
-//         if(@$input['select']){
-        
-//         switch($input['select']){
-//             case 12 :
-//                 $value = 12 ;
-//                 break;
-//             case 24 :
-//                 $value = 24 ;
-//                 break;
-//             case 48 :
-//                 $value = 48;
-//                 break;
-//             case 96 :
-//                 $value = 96 ;
-//                 break;
-//             default :
-//                 $value = 12;
-//         }}
-      
-//         $product = Product::where('category_id',$id)->paginate(@$value);
-//         return view('Webpages.shop',['id'=>Category::findOrFail($id),'products'=>$product,'value'=>@$value]);
-    
-// }
+
 
 
 
@@ -140,10 +115,7 @@ public function sort( Request $request,$id){
         return view('Webpages.product-details',compact('id' ,'product' , 'comments'));
     }
 
-    // public function productdata($id){
-    //     $products = Product::where('id',$id);
-    //     return view('Webpages.product-details',compact('products'));
-    // }
+  
 
     //Fuinction For Search Button 
 

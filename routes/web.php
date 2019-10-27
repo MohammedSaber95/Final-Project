@@ -24,6 +24,9 @@ Route::any('/search','pagecontroller@mysearch')->name('searchproduct');
 Route::any('/prodsthisweek','pagecontroller@thisweek')->name('thisweek');
 Route::any('/comment','pagecontroller@comment')->name('comment');
 
+Route::get('/favourite','favouriteController@index')->name('favourite');
+
+
 
 
 
