@@ -122,9 +122,7 @@ class Usersctcontroller extends Controller
             $file->move('img/users-img/',$filename);
             $User->image=$filename;
 
-        }else{
-            return $request;
-            $User->image='';
+    
         }
         $User->save();
         return redirect('dashboard/users')->with('sucess','data updated');

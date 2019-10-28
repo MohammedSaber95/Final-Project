@@ -27,7 +27,7 @@ class Addproductscontroller extends Controller
             'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'price' => 'required|numeric|min:5|max:100',
+            'price' => 'required|numeric|min:5',
         ]);
        $products = new Product();
        $products['name'] = $input['name'];

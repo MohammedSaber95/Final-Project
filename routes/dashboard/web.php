@@ -9,18 +9,28 @@ Route::prefix('dashboard')->group(function(){
     Route::post('/users' , 'Usersctcontroller@store')->name('Addusers');
     Route::get('/EditeUsers/{id}' , 'Usersctcontroller@edit')->name('EditeUsers');
     Route::put('/UpdateUsers/{id}' , 'Usersctcontroller@Update')->name('UpdateUsers');
+    Route::delete('/users/{id}', 'Usersctcontroller@destroy')->name('users.destroy');
 
 
     Route::get('/Admins' , 'Adminsctcontroller@index')->name('Admins');
     Route::get('/inline' , 'dashboardrouts@Inline')->name('Inline');
-    Route::get('/Categories' ,'Categorycontroller@index')->name('Categories');
 
+
+
+    Route::get('/Categories' ,'Categorycontroller@index')->name('Categories');
+    Route::post('/Categories' , 'Categorycontroller@store')->name('AddCategory');
+    Route::get('/EditeCategory/{id}' , 'Categorycontroller@edit')->name('EditeCategory');
+    Route::put('/UpdateCategory/{id}' , 'Categorycontroller@update')->name('UpdateCategory');
+    Route::delete('/Categories/{id}', 'Categorycontroller@destroy')->name('category.destroy');
 
     Route::resource('/comments' ,'commentController');
     Route::resource('/orders' ,'orderController');
    
     Route::get('/Products' , 'Productcontroller@index')->name('Products');
-    Route::post('/AddProducts' , 'Addproductscontroller@store')->name('AddProducts');
+    Route::post('/AddProducts' , 'Productcontroller@store')->name('AddProducts');
+    Route::get('/EditeProducts/{id}' , 'Productcontroller@edit')->name('EditeProducts');
+    Route::put('/UpdateProducts/{id}' , 'Productcontroller@update')->name('UpdateProducts');
+    Route::delete('/Products/{id}', 'Productcontroller@destroy')->name('product.destroy');
 
     Route::get('/modals' , 'dashboardrouts@modals')->name('modals');
     Route::get('/navbar' , 'dashboardrouts@navbar')->name('navbar');
@@ -41,7 +51,6 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/login' , 'dashboardrouts@login')->name('login');
     Route::get('/register' , 'dashboardrouts@register')->name('register');
 
-    Route::delete('/users/{id}', 'Usersctcontroller@destroy')->name('users.destroy');
     
 });
     // Route::get('/check' , function(){

@@ -21,7 +21,7 @@
                             <ol class="breadcrumb mt-50">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">{{$product->Category->name}}</a></li>
+                                <li class="breadcrumb-item"><a href="#"></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
                             </ol>
                         </nav>
