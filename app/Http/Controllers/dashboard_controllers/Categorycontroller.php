@@ -38,7 +38,29 @@ class Categorycontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request -> all();
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'status' => 'required',
+       ]);
+        $category=new Category();
+        $category['name']=request('name');
+        $category['description']=request('description');
+        $category['status']=request('status');
+        if($request->hasfile('image')){
+            $file=$request->file('image');
+            $extention=$file->getClientOriginalExtension();
+            $filename=time().'.'.$extention;
+            $file->move('img/category-img/',$filename);
+            $category->image=$filename;
+    
+        }else{
+            return $request;
+            $category->image='';
+        }
+        $category->save();
+        return back()->with('sucess','data updated');
     }
 
     /**
@@ -58,9 +80,10 @@ class Categorycontroller extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Category $category , $id)
     {
-        //
+        $category=Category::find($id);
+        return view('dash_pages.pages.Categories&Products.editeCategory' , compact('category' , $category));
     }
 
     /**
@@ -70,9 +93,26 @@ class Categorycontroller extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category ,$id)
     {
-        //
+         $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'description' => 'required',
+        'status' => 'required',
+   ]);
+    $category=Category::find($id);
+    $category['name']=request('name');
+    $category['description']=request('description');
+    $category['status']=request('status');
+    if($request->hasfile('image')){
+        $file=$request->file('image');
+        $extention=$file->getClientOriginalExtension();
+        $filename=time().'.'.$extention;
+        $file->move('img/category-img/',$filename);
+        $category->image=$filename;
+    }
+    $category->save();
+    return redirect('dashboard/Categories')->with('sucess','data updated');
     }
 
     /**
@@ -81,9 +121,11 @@ class Categorycontroller extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category , $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+         return back();
     }
 
 

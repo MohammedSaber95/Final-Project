@@ -71,6 +71,16 @@
                     <small id="price" class="form-text text-muted">from 5 to 100</small>
                 </div>
                 <div class="form-group">
+                    <label for="price">user_id </label><br>
+                    <input type="text"  name="user_id">
+                    {{-- <small id="user_id" class="form-text text-muted">from 5 to 100</small> --}}
+                </div>
+                <div class="form-group">
+                    <label for="price">category_id </label><br>
+                    <input type="text"  name="category_id">
+                    {{-- <small id="user_id" class="form-text text-muted">from 5 to 100</small> --}}
+                </div>
+                <div class="form-group">
                     <label for="color">Color </label>
                     <input type="color"  name="color" >
                 </div>
@@ -128,8 +138,6 @@
 
   </tr>
 @foreach ($products as $prods)
-    
-
 <tr>
   <td>{{$prods->id}}</td>
   <td>{{$prods->name}}</td>
@@ -139,8 +147,14 @@
   <td><img src="{{asset('img/product-img/'.$prods->image3)}}" height=80px width=100px/></td>
   <td>$ {{ceil($prods->price)}}</td>
   <td><div style="background:{{$prods->color}};width:50px;height:50px;"></div></td>
-  <td style="width:200px;height:100px">  <a href="#" class="btn btn-primary">Edit</a>
-    <a href="#" class="btn btn-danger">Delete</a></td>
+  <td style="width:200px;height:100px">
+      <a href="{{route('EditeProducts',$prods->id)}}" class="btn btn-primary">Edit</a>
+      <form method="POST" action="{{route('product.destroy' ,$prods->id)}}">
+          {{ @csrf_field() }}
+          {{ method_field('DELETE') }}
+            <input type="submit" class="btn btn-danger" value="Delete "></form>
+  </td>
+
 </tr>
 @endforeach
 

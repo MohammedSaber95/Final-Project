@@ -41,13 +41,14 @@
                     <td>{{App\User::where('id',$comment->user_id)->pluck('name')}}</td>
                     <td>{{App\Product::where('id',$comment->product_id)->pluck('name')}}</td>
                     <td class="d-flex">
-                        <form action="">
-                            <button class="btn btn-primary">Show</button>
+                    <form action="{{route('comments.show',$comment->id)}}">
+                            <input class="btn btn-primary" type="submit" value="show">
                         </form>
                         &nbsp;
-                        <form action="">
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
+                        <form method="POST" action="{{route('comments.destroy',$comment->id)}}">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                              <button style="width:70px;" type="submit" class="btn btn-danger">Delete</button> </form>
                     
                     </td>
                     </tr>

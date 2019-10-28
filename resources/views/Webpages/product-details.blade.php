@@ -21,7 +21,7 @@
                             <ol class="breadcrumb mt-50">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                                <li class="breadcrumb-item"><a href="#"></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
                             </ol>
                         </nav>
@@ -64,8 +64,22 @@
                                         </a>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
+
+                        @foreach ($comments as $comment)
+                        {{-- display----Comments --}}
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title"></h5>
+                              <h6 class="card-subtitle mb-2 text-muted"><a href="#" ><p class="h3">{{$comment->User->name}}</p></a></h6>
+                              <p class="card-text h3">{{$comment->description}}. &nbsp;&nbsp;&nbsp;&nbsp; <small>ago &nbsp;{{ $comment->created_at->diffForHumans() }}</small></p>
+
+                            </div>
+                          </div> 
+                          @endforeach
+                          {{$comments->links()}}
                     </div>
                     <div class="col-12 col-lg-5">
                         <div class="single_product_desc">
@@ -73,7 +87,7 @@
                             <div class="product-meta-data">
                                 <div class="line"></div>
                                 <p class="product-price">${{$product->price}}</p>
-                                <a href="#" >
+                            <a href="{{route('product',$product->id)}}">
                                     <h6>{{$product->name}}</h6>
                                 </a>
                                 <!-- Ratings & Review -->
@@ -88,7 +102,7 @@
                                 </form>
                                     </div>
                                     <div class="review">
-                                        <a href="#">Write A Review</a>
+                                        <a href="#comment">Write A Review</a>
                                     </div>
                                 </div>
                                 <!-- Avaiable -->
@@ -111,6 +125,20 @@
                                 </div>
                                 <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
                             </form>
+                            <br><br>
+                            {{-- addcomments  --}}
+
+                            <form action="{{route('comments.store')}}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                 <input type="hidden" name="title" value="{{ $product->name }}">
+                                 <input type="hidden" name="product_id"  value="{{ $product->id }}">
+                                 <input type="hidden" name="status"  value="{{ $product->status }}">
+                                  <label for="comment">Comment:</label>
+                                  <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="AddComment">
+                              </form>
 
                         </div>
                     </div>
